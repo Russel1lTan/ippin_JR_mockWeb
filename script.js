@@ -92,15 +92,39 @@ if (reduceMotion) {
   revealTargets.forEach((target) => revealObserver.observe(target));
 }
 
-document.querySelectorAll(".calendar-has-event").forEach((day) => {
-  day.setAttribute("role", "button");
-  day.setAttribute("tabindex", "0");
-  day.setAttribute("aria-expanded", "false");
+const calendarEvent = document.querySelector(".calendar-event");
+const calendarEventImage = document.querySelector(".calendar-event-image");
+const calendarEventTitle = document.querySelector(".calendar-event h3");
+const calendarEventDate = document.querySelector(".calendar-event-date");
+const calendarEventDescription = document.querySelector(".calendar-event-description");
 
+document.querySelectorAll(".calendar-has-event").forEach((day) => {
+  day.setAttribute("aria-expanded", String(day.classList.contains("is-active")));
   const activateDay = () => {
-    const isActive = day.classList.toggle("is-active");
-    day.setAttribute("aria-expanded", String(isActive));
-    document.querySelector(".calendar-event")?.classList.toggle("is-highlighted", isActive);
+    document.querySelectorAll(".calendar-has-event").forEach((eventDay) => {
+      eventDay.classList.toggle("is-active", eventDay === day);
+      eventDay.setAttribute("aria-expanded", String(eventDay === day));
+    });
+
+    if (calendarEventImage && day.dataset.eventImage) {
+      calendarEventImage.src = day.dataset.eventImage;
+      calendarEventImage.alt = day.dataset.eventTitle || "";
+    }
+
+    if (calendarEventTitle && day.dataset.eventTitle) {
+      calendarEventTitle.textContent = day.dataset.eventTitle;
+    }
+
+    if (calendarEventDate && day.dataset.eventDate) {
+      calendarEventDate.textContent = day.dataset.eventDate;
+    }
+
+    if (calendarEventDescription && day.dataset.eventDescription) {
+      calendarEventDescription.textContent = day.dataset.eventDescription;
+    }
+
+    calendarEvent?.classList.remove("is-highlighted");
+    window.requestAnimationFrame(() => calendarEvent?.classList.add("is-highlighted", "is-expanded"));
   };
 
   day.addEventListener("click", activateDay);
