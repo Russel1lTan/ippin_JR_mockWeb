@@ -1157,6 +1157,120 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
+.functions-hero .ghost,
+.functions-intro .ghost,
+.function-pack-section .ghost {
+  color: #fffaf3;
+}
+
+.function-options {
+  background: linear-gradient(180deg, var(--paper), var(--cream));
+}
+
+.function-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.function-card {
+  display: grid;
+  min-height: 300px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  background: #fffdf8;
+}
+
+.function-card span {
+  color: var(--wine);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.function-card h3 {
+  align-self: end;
+  margin: 0 0 14px;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(28px, 2.4vw, 40px);
+  font-weight: 300;
+  line-height: 1.04;
+}
+
+.function-card p {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.room-section {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  background: var(--wine-dark);
+  color: #fffaf3;
+}
+
+.room-card {
+  min-height: 360px;
+  padding: 28px;
+  border: 1px solid rgba(255, 250, 243, 0.26);
+  background: rgba(133, 78, 93, 0.42);
+}
+
+.room-card h2 {
+  margin: 0 0 26px;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(34px, 3.4vw, 58px);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.room-card p:not(.eyebrow) {
+  line-height: 1.7;
+}
+
+.canape-section {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.75fr) minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 90px);
+  align-items: start;
+}
+
+.canape-section h2,
+.function-pack-section h2 {
+  margin: 0 0 22px;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(40px, 6vw, 86px);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.canape-section p:not(.eyebrow) {
+  line-height: 1.8;
+}
+
+.canape-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.canape-list span {
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: #fffdf8;
+}
+
+.function-pack-section {
+  background: var(--wine-dark);
+  color: #fffaf3;
+}
+
+.parking-band {
+  background: var(--cream);
+}
+
 @media (max-width: 1060px) {
   .site-header {
     grid-template-columns: 1fr auto;
@@ -1230,7 +1344,10 @@ h3 {
   .event-card-wide,
   .feature-band,
   .dish-list,
-  .menu-category-grid {
+  .menu-category-grid,
+  .function-grid,
+  .room-section,
+  .canape-section {
     grid-template-columns: 1fr;
   }
 
