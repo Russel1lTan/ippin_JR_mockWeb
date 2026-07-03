@@ -1351,6 +1351,88 @@ h3 {
   width: min(240px, 62%);
 }
 
+.about-awards-section {
+  background: linear-gradient(180deg, var(--paper), var(--cream));
+}
+
+.about-award-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: grid;
+  gap: 14px 24px;
+}
+
+.about-award-list li {
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: #fffdf8;
+}
+
+.about-story-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(320px, 1fr);
+  gap: clamp(34px, 8vw, 120px);
+  padding: clamp(70px, 9vw, 130px) clamp(22px, 8vw, 130px);
+  background: var(--wine-dark);
+  color: #fffaf3;
+}
+
+.about-story-section h2,
+.contact-copy h2,
+.service-card h2 {
+  margin: 0 0 24px;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(40px, 6vw, 86px);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.about-story-copy p,
+.contact-copy p,
+.service-card p {
+  line-height: 1.76;
+}
+
+.about-location-section {
+  background: var(--cream);
+}
+
+.about-location-section img {
+  width: 100%;
+  min-height: 520px;
+  object-fit: cover;
+}
+
+.contact-section {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(280px, 0.7fr);
+  gap: 28px;
+  padding-bottom: 150px;
+}
+
+.contact-copy,
+.service-card {
+  padding: clamp(28px, 5vw, 56px);
+  border: 1px solid var(--line);
+  background: #fffdf8;
+}
+
+.contact-copy .ghost {
+  color: var(--wine);
+}
+
+.service-card ul {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-card li {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
 @media (max-width: 1060px) {
   .site-header {
     grid-template-columns: 1fr auto;
@@ -1429,7 +1511,10 @@ h3 {
   .room-section,
   .canape-section,
   .gift-award-grid,
-  .gift-shop-section {
+  .gift-shop-section,
+  .about-award-list,
+  .about-story-section,
+  .contact-section {
     grid-template-columns: 1fr;
   }
 
