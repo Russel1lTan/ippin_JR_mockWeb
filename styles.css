@@ -572,9 +572,68 @@ h3 {
   gap: 18px;
 }
 
-.menu-block ul {
-  margin: 16px 0 0;
-  padding-left: 18px;
+.menu-section {
+  background: linear-gradient(180deg, var(--paper), var(--cream));
+}
+
+.menu-block-heading {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px 24px;
+  align-items: end;
+  padding-bottom: 22px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.menu-block-heading .eyebrow {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.menu-block-heading strong {
+  color: var(--wine);
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(32px, 4vw, 58px);
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+.dish-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 26px;
+  margin-top: 24px;
+}
+
+.dish-item {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.dish-item h3,
+.pairing-card h3 {
+  margin-bottom: 8px;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 24px;
+}
+
+.dish-item p,
+.pairing-card p {
+  margin: 0;
+  color: #64423a;
+  line-height: 1.62;
+}
+
+.pairing-card {
+  margin-top: 26px;
+  padding: 22px;
+  background: var(--wine);
+  color: #fffaf3;
+}
+
+.pairing-card p {
+  color: inherit;
 }
 
 .feature-band {
@@ -668,7 +727,8 @@ h3 {
   .footer-main,
   .page-hero,
   .content-grid,
-  .feature-band {
+  .feature-band,
+  .dish-list {
     grid-template-columns: 1fr;
   }
 
@@ -725,5 +785,9 @@ h3 {
 
   .footer-bottom div {
     margin-top: 18px;
+  }
+
+  .menu-block-heading {
+    grid-template-columns: 1fr;
   }
 }
