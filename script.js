@@ -5,6 +5,16 @@ const gallery = document.querySelector(".gallery-section");
 const bookingUrl = "https://www.sevenrooms.com/explore/ippinjapanesedining/reservations/create/search/";
 const logoUrl = "https://static.wixstatic.com/media/0e0390_657064e383634f6a9622112d2a5b7fb5~mv2.png/v1/fill/w_294,h_120,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Ippin_Wordmark_White.png";
 
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
+document.querySelectorAll(".site-nav a, .footer-bottom a").forEach((link) => {
+  const href = link.getAttribute("href") || "";
+  const linkPage = href.split("#")[0];
+
+  if (linkPage === currentPage || (currentPage === "index.html" && linkPage === "")) {
+    link.setAttribute("aria-current", "page");
+  }
+});
+
 menuToggle?.addEventListener("click", () => {
   const isOpen = siteNav?.classList.toggle("is-open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));

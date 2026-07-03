@@ -5,6 +5,7 @@
   --cream: #f7f1e9;
   --paper: #fffaf3;
   --muted: #8a6b61;
+  --gold: #d8b15a;
   --line: rgba(59, 2, 2, 0.18);
 }
 
@@ -79,6 +80,11 @@ a {
 
 .site-nav a:hover,
 .site-nav a:focus-visible {
+  opacity: 1;
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--gold);
   opacity: 1;
 }
 
@@ -473,6 +479,10 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+}
+
+.footer-bottom a[aria-current="page"] {
+  color: var(--gold);
 }
 
 .page-main {
