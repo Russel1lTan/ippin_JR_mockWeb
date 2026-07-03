@@ -57,11 +57,24 @@ a {
   padding: 18px 36px;
   background: var(--wine-dark);
   color: #fff;
+  transition: min-height 220ms ease, padding 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.site-header.is-scrolled {
+  min-height: 78px;
+  padding-block: 10px;
+  background: rgba(38, 0, 0, 0.96);
+  box-shadow: 0 12px 34px rgba(38, 0, 0, 0.32);
 }
 
 .logo {
   width: 147px;
   height: auto;
+  transition: transform 220ms ease, width 220ms ease;
+}
+
+.site-header.is-scrolled .logo {
+  width: 124px;
 }
 
 .site-nav {
@@ -74,8 +87,22 @@ a {
 }
 
 .site-nav a {
+  position: relative;
   opacity: 0.86;
-  transition: opacity 160ms ease;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+
+.site-nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms ease;
 }
 
 .site-nav a:hover,
@@ -86,6 +113,12 @@ a {
 .site-nav a[aria-current="page"] {
   color: var(--gold);
   opacity: 1;
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after,
+.site-nav a[aria-current="page"]::after {
+  transform: scaleX(1);
 }
 
 .menu-toggle {
@@ -109,6 +142,12 @@ a {
 .hero-panel img {
   height: 100%;
   object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 900ms ease, filter 360ms ease;
+}
+
+.hero-panel:hover img {
+  filter: saturate(1.08) contrast(1.03);
 }
 
 .hero-title {
@@ -209,10 +248,33 @@ h3 {
 }
 
 .booking-card {
+  position: relative;
   min-height: 338px;
   padding: 30px;
   border: 1px solid var(--line);
   background: #fffdf8;
+  overflow: hidden;
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.booking-card::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(216, 177, 90, 0.16), transparent 45%);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.booking-card:hover {
+  border-color: rgba(79, 6, 6, 0.42);
+  box-shadow: 0 18px 38px rgba(79, 6, 6, 0.12);
+  transform: translateY(-6px);
+}
+
+.booking-card:hover::before {
+  opacity: 1;
 }
 
 .booking-card.featured {
@@ -302,6 +364,7 @@ h3 {
 }
 
 .button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -313,6 +376,31 @@ h3 {
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  overflow: hidden;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.button::before {
+  position: absolute;
+  top: -120%;
+  bottom: -120%;
+  left: -60%;
+  width: 42%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  content: "";
+  transform: rotate(18deg);
+  transition: left 420ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  box-shadow: 0 12px 26px rgba(38, 0, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+.button:hover::before,
+.button:focus-visible::before {
+  left: 120%;
 }
 
 .button.ghost {
@@ -393,6 +481,12 @@ h3 {
 .gallery-grid img {
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  transition: filter 260ms ease, transform 360ms ease;
+}
+
+.gallery-grid img:hover {
+  filter: saturate(1.1) contrast(1.04);
+  transform: scale(1.025);
 }
 
 .gallery-extra {
@@ -401,6 +495,7 @@ h3 {
 
 .gallery-section.is-expanded .gallery-extra {
   display: block;
+  animation: soft-rise 360ms ease both;
 }
 
 .load-more {
@@ -483,6 +578,58 @@ h3 {
 
 .footer-bottom a[aria-current="page"] {
   color: var(--gold);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 620ms ease var(--reveal-delay, 0ms), transform 620ms ease var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible,
+.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes soft-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes event-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(216, 177, 90, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(216, 177, 90, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(216, 177, 90, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .page-main {
@@ -605,6 +752,7 @@ h3 {
   padding: clamp(28px, 5vw, 58px);
   border: 1px solid rgba(255, 250, 243, 0.28);
   background: rgba(133, 78, 93, 0.45);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
 }
 
 .beverage-feature h2,
@@ -675,6 +823,8 @@ h3 {
   min-height: 760px;
   border: 1px solid rgba(255, 250, 243, 0.28);
   background: #f7f4ee;
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
 }
 
 .beverage-pdf-viewer object {
@@ -690,6 +840,7 @@ h3 {
   padding: 28px;
   border: 1px solid rgba(255, 250, 243, 0.28);
   background: rgba(133, 78, 93, 0.45);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
 }
 
 .beverage-index h3 {
@@ -750,6 +901,8 @@ h3 {
   min-height: 360px;
   border: 1px solid var(--line);
   background: #fffdf8;
+  overflow: hidden;
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
 }
 
 .event-card-wide {
@@ -761,6 +914,12 @@ h3 {
   height: 100%;
   min-height: 360px;
   object-fit: cover;
+  transition: filter 260ms ease, transform 500ms ease;
+}
+
+.event-card:hover img {
+  filter: saturate(1.08);
+  transform: scale(1.035);
 }
 
 .event-card > div {
@@ -792,6 +951,7 @@ h3 {
   border: 0;
   border-radius: 16px;
   background: rgba(133, 78, 93, 0.72);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
 }
 
 .calendar-header {
@@ -847,6 +1007,14 @@ h3 {
   color: #fffaf3;
   font-size: clamp(20px, 2vw, 30px);
   font-weight: 800;
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.calendar-day:not(.calendar-empty):hover,
+.calendar-day:focus-visible {
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(255, 250, 243, 0.22);
+  transform: translateY(-2px);
 }
 
 .calendar-empty {
@@ -855,6 +1023,7 @@ h3 {
 
 .calendar-has-event {
   overflow: hidden;
+  cursor: pointer;
 }
 
 .calendar-has-event span {
@@ -870,12 +1039,36 @@ h3 {
   text-align: center;
 }
 
+.calendar-has-event::after {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(216, 177, 90, 0.5);
+  content: "";
+  animation: event-pulse 1800ms ease-out infinite;
+}
+
+.calendar-has-event.is-active {
+  background: rgba(216, 177, 90, 0.34);
+}
+
 .calendar-event {
   max-width: none;
   margin-top: 22px;
   padding: 24px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   background: rgba(38, 0, 0, 0.25);
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.calendar-event.is-highlighted {
+  border-color: rgba(216, 177, 90, 0.7);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 .calendar-event h3 {
@@ -895,6 +1088,7 @@ h3 {
   justify-content: space-between;
   gap: 24px;
   pointer-events: none;
+  animation: soft-rise 520ms ease both;
 }
 
 .floating-cta a {
@@ -912,6 +1106,13 @@ h3 {
   letter-spacing: 0.2em;
   text-align: center;
   pointer-events: auto;
+  transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+.floating-cta a:hover,
+.floating-cta a:focus-visible {
+  box-shadow: 0 12px 28px rgba(38, 0, 0, 0.22);
+  transform: translateY(-3px);
 }
 
 .event-detail-section {
@@ -923,6 +1124,31 @@ h3 {
   padding: 30px;
   border: 1px solid var(--line);
   background: #fffdf8;
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.content-card:hover,
+.menu-block:hover,
+.dish-item:hover,
+.compact-dish:hover,
+.event-card:hover,
+.function-card:hover,
+.room-card:hover,
+.gift-award-grid article:hover,
+.beverage-feature:hover,
+.beverage-index:hover {
+  border-color: rgba(79, 6, 6, 0.36);
+  box-shadow: 0 18px 38px rgba(79, 6, 6, 0.12);
+  transform: translateY(-4px);
+}
+
+.dish-item,
+.compact-dish,
+.function-card,
+.room-card,
+.gift-award-grid article,
+.beverage-index {
+  transition: border-color 220ms ease, box-shadow 220ms ease, padding 180ms ease, transform 220ms ease;
 }
 
 .content-card img {
@@ -961,6 +1187,14 @@ h3 {
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.menu-tabs a:hover,
+.menu-tabs a:focus-visible {
+  background: var(--wine);
+  color: #fffaf3;
+  transform: translateY(-2px);
 }
 
 .menu-list {
@@ -1005,6 +1239,11 @@ h3 {
 .dish-item {
   padding: 18px 0;
   border-top: 1px solid var(--line);
+  transition: padding 180ms ease, transform 180ms ease;
+}
+
+.dish-item:hover {
+  padding-inline: 10px;
 }
 
 .dish-item h3,
