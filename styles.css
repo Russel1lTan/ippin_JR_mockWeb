@@ -628,8 +628,98 @@ h3 {
   line-height: 1.9;
 }
 
+.beverage-pdf-section {
+  padding-top: 0;
+  padding-bottom: 150px;
+  background: var(--wine-dark);
+}
+
+.beverage-pdf-heading {
+  display: flex;
+  gap: 24px;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.beverage-pdf-heading h2 {
+  margin: 0;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(40px, 6vw, 86px);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.beverage-pdf-heading .ghost {
+  color: #fffaf3;
+}
+
+.beverage-pdf-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: 22px;
+  align-items: start;
+}
+
+.beverage-pdf-viewer {
+  min-height: 760px;
+  border: 1px solid rgba(255, 250, 243, 0.28);
+  background: #f7f4ee;
+}
+
+.beverage-pdf-viewer object {
+  width: 100%;
+  height: min(82vh, 900px);
+  min-height: 760px;
+  display: block;
+}
+
+.beverage-index {
+  position: sticky;
+  top: 120px;
+  padding: 28px;
+  border: 1px solid rgba(255, 250, 243, 0.28);
+  background: rgba(133, 78, 93, 0.45);
+}
+
+.beverage-index h3 {
+  margin: 0 0 20px;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 34px;
+  font-weight: 300;
+}
+
+.beverage-index dl {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.beverage-index dt {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.beverage-index dd {
+  margin: -8px 0 4px;
+  color: rgba(255, 250, 243, 0.82);
+  line-height: 1.55;
+}
+
 .content-section {
   padding: 78px clamp(22px, 7vw, 110px);
+}
+
+.content-section.curator-section {
+  padding-bottom: 150px;
+}
+
+.content-section.beverage-pdf-section {
+  padding-top: 0;
+  padding-bottom: 150px;
 }
 
 .content-grid {
@@ -1132,6 +1222,7 @@ h3 {
   .beverage-hero .page-hero-content,
   .beverage-awards,
   .curator-section,
+  .beverage-pdf-layout,
   .bottomless-hero,
   .content-grid,
   .event-grid,
@@ -1164,6 +1255,15 @@ h3 {
     grid-template-columns: 1fr;
     padding: 24px;
     background: var(--wine-dark);
+  }
+
+  .beverage-pdf-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .beverage-index {
+    position: static;
   }
 }
 
