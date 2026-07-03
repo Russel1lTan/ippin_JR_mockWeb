@@ -543,6 +543,91 @@ h3 {
   text-transform: uppercase;
 }
 
+.beverage-page {
+  background: var(--wine-dark);
+  color: #fffaf3;
+}
+
+.beverage-hero {
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 650px;
+}
+
+.beverage-hero .page-hero-content {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(320px, 1fr);
+  gap: clamp(36px, 9vw, 150px);
+  align-items: end;
+  width: 100%;
+}
+
+.beverage-hero h1 {
+  margin-bottom: 28px;
+  font-size: clamp(58px, 9vw, 128px);
+}
+
+.beverage-intro {
+  max-width: 820px;
+}
+
+.beverage-intro p {
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 2.05;
+  text-transform: uppercase;
+}
+
+.beverage-pdf-link {
+  background: #fffaf3;
+  color: var(--wine);
+}
+
+.beverage-awards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  background: var(--wine-dark);
+}
+
+.beverage-feature {
+  display: grid;
+  min-height: 360px;
+  padding: clamp(28px, 5vw, 58px);
+  border: 1px solid rgba(255, 250, 243, 0.28);
+  background: rgba(133, 78, 93, 0.45);
+}
+
+.beverage-feature h2,
+.curator-section h2 {
+  margin: 0;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(34px, 5vw, 72px);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.beverage-feature p:not(.eyebrow) {
+  align-self: end;
+  max-width: 620px;
+  line-height: 1.8;
+}
+
+.curator-section {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(320px, 1fr);
+  gap: clamp(30px, 7vw, 110px);
+  align-items: start;
+  padding-bottom: 150px;
+  background: var(--wine-dark);
+}
+
+.curator-section > p {
+  margin: 0;
+  max-width: 860px;
+  font-size: clamp(17px, 1.3vw, 22px);
+  line-height: 1.9;
+}
+
 .content-section {
   padding: 78px clamp(22px, 7vw, 110px);
 }
@@ -1044,6 +1129,9 @@ h3 {
   .footer-main,
   .page-hero,
   .whats-on-hero .page-hero-content,
+  .beverage-hero .page-hero-content,
+  .beverage-awards,
+  .curator-section,
   .bottomless-hero,
   .content-grid,
   .event-grid,
