@@ -905,6 +905,63 @@ h3 {
   background: var(--cream);
 }
 
+.bottomless-page {
+  background: var(--wine-dark);
+  color: #fffaf3;
+}
+
+.bottomless-hero {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1fr);
+  gap: clamp(34px, 7vw, 110px);
+  align-items: center;
+  min-height: calc(100vh - 104px);
+  padding: clamp(34px, 7vw, 110px);
+}
+
+.bottomless-hero figure {
+  margin: 0;
+}
+
+.bottomless-hero img {
+  max-height: 760px;
+  object-fit: cover;
+}
+
+.bottomless-copy {
+  max-width: 780px;
+}
+
+.bottomless-copy h1 {
+  margin: 0 0 26px;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: clamp(54px, 8vw, 116px);
+  font-weight: 300;
+  line-height: 0.94;
+}
+
+.bottomless-copy p:not(.eyebrow) {
+  font-size: clamp(17px, 1.5vw, 22px);
+  line-height: 1.8;
+}
+
+.bottomless-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 34px 0 24px;
+}
+
+.bottomless-actions .ghost {
+  color: #fffaf3;
+}
+
+.responsible-note {
+  max-width: 620px;
+  color: rgba(255, 250, 243, 0.72);
+  font-size: 14px !important;
+}
+
 .feature-band h2 {
   margin: 0 0 20px;
   font-family: "Times New Roman", Georgia, serif;
@@ -987,6 +1044,7 @@ h3 {
   .footer-main,
   .page-hero,
   .whats-on-hero .page-hero-content,
+  .bottomless-hero,
   .content-grid,
   .event-grid,
   .event-card,
