@@ -166,17 +166,19 @@ if (!document.querySelector(".site-footer")) {
       <a href="${bookingUrl}" target="_blank" rel="noreferrer">ご予約はこちら Reservation Here</a>
     </div>
     <div class="footer-main">
-      <img src="${logoUrl}" alt="IPPIN">
-      <div>
+      <div class="footer-brand">
         <h2>IPPIN JAPANESE DINING</h2>
+        <img class="footer-brand-logo" src="${logoUrl}" alt="IPPIN">
+        <a class="footer-agfg-vote" href="https://www.agfg.com.au/restaurant/ippin-japanese-dining-118894" target="_blank" rel="noreferrer" aria-label="Vote for IPPIN on AGFG">
+          <img src="https://media1.agfg.com.au/images/links/voteforus-sq-140x80.png" alt="AGFG vote for us">
+        </a>
+      </div>
+      <div>
         <p>Address: The Garden Pavilion, West Village, Level 2/97 Boundary St, West End QLD 4101</p>
         <p>1800 749 177 or 0432 111 287</p>
         <p>After hours? Try our AI booking assistant (Beta): 0468 153 749</p>
         <p>To book, please email <a href="mailto:reservation@ippin-wv.com.au">reservation@ippin-wv.com.au</a></p>
         <p>For general enquiries, hiring, please email <a href="mailto:manager@ippin-wv.com.au">manager@ippin-wv.com.au</a></p>
-        <a class="footer-agfg-vote" href="https://www.agfg.com.au/restaurant/ippin-japanese-dining-118894" target="_blank" rel="noreferrer" aria-label="Vote for IPPIN on AGFG">
-          <img src="https://media1.agfg.com.au/images/links/voteforus-sq-140x80.png" alt="AGFG vote for us">
-        </a>
       </div>
       <div>
         <h3>Service Time:</h3>
