@@ -4,18 +4,42 @@ const loadMore = document.querySelector(".load-more");
 const gallery = document.querySelector(".gallery-section");
 const siteHeader = document.querySelector(".site-header");
 const bookingUrl = "https://www.sevenrooms.com/explore/ippinjapanesedining/reservations/create/search/";
+const findUsUrl = "about.html#contact-details";
 const logoUrl = "https://static.wixstatic.com/media/0e0390_657064e383634f6a9622112d2a5b7fb5~mv2.png/v1/fill/w_294,h_120,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Ippin_Wordmark_White.png";
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
-document.querySelectorAll(".site-nav a, .footer-bottom a").forEach((link) => {
-  const href = link.getAttribute("href") || "";
-  const linkPage = href.split("#")[0];
 
-  if (linkPage === currentPage || (currentPage === "index.html" && linkPage === "")) {
-    link.setAttribute("aria-current", "page");
+const syncActiveLinks = () => {
+  document.querySelectorAll(".site-nav a, .footer-bottom a").forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    const linkPage = href.split("#")[0];
+
+    link.removeAttribute("aria-current");
+    if (linkPage === currentPage || (currentPage === "index.html" && linkPage === "")) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
+};
+
+const ensureFloatingCta = () => {
+  const floatingCta = document.querySelector(".floating-cta") || document.createElement("div");
+  floatingCta.className = "floating-cta";
+  floatingCta.setAttribute("aria-label", "Quick actions");
+  floatingCta.innerHTML = `
+    <a class="floating-cta-find" href="${findUsUrl}">
+      <span>FIND US EASILY | CLICK HERE</span>
+      <span class="floating-cta-pin" aria-hidden="true"></span>
+    </a>
+    <a class="floating-cta-book" href="${bookingUrl}" target="_blank" rel="noreferrer">ご予約はこちら RESERVATION HERE</a>
+  `;
+
+  if (!floatingCta.isConnected) {
+    document.body.append(floatingCta);
   }
-});
+};
+
+syncActiveLinks();
 
 const syncHeaderState = () => {
   siteHeader?.classList.toggle("is-scrolled", window.scrollY > 8);
@@ -114,8 +138,8 @@ if (!document.querySelector(".site-footer")) {
   footer.className = "site-footer";
   footer.innerHTML = `
     <div class="footer-cta">
-      <a href="about.html#contact-details">FIND US EASILY | CLICK HERE</a>
-      <a href="${bookingUrl}" target="_blank" rel="noreferrer">Reservation Here</a>
+      <a href="${findUsUrl}">FIND US EASILY | CLICK HERE</a>
+      <a href="${bookingUrl}" target="_blank" rel="noreferrer">ご予約はこちら Reservation Here</a>
     </div>
     <div class="footer-main">
       <img src="${logoUrl}" alt="IPPIN">
@@ -147,3 +171,6 @@ if (!document.querySelector(".site-footer")) {
   `;
   document.body.append(footer);
 }
+
+ensureFloatingCta();
+syncActiveLinks();
