@@ -24,7 +24,9 @@ Temporary PDF extraction files are ignored under `tmp/`.
 
 ## GitHub
 
-No GitHub remote is currently configured. Run `git remote -v` to confirm; it should be empty until a GitHub repository is created and added.
+Remote repository:
+
+- https://github.com/Russel1lTan/ippin_JR_mockWeb.git
 
 ## Next Improvements
 
