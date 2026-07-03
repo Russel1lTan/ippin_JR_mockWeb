@@ -17,7 +17,7 @@ The current replica includes local page shells for:
 ## Next improvements
 
 - Replace remote image URLs with original image files supplied by IPPIN.
-- Complete shared footer/header consistency across all secondary pages.
+- Replace the JavaScript-injected shared footer with server-side/static templates if the project moves to a build system.
 - Expand the full menu page with all a la carte, lunch, and dietary option details.
 - Tune spacing and image crops against desktop and mobile screenshots from the live site.
 - Connect real SevenRooms, Google Maps, Instagram, and gift card URLs.
