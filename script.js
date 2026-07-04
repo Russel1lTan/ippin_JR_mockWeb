@@ -70,6 +70,57 @@ loadMore?.addEventListener("click", () => {
   loadMore.textContent = expanded ? "Show Less" : "Load More";
 });
 
+const menuTabs = document.querySelectorAll("[data-menu-tab]");
+const menuPanels = document.querySelectorAll("[data-menu-panel]");
+const menuTitle = document.querySelector("[data-menu-title]");
+const menuLabels = {
+  banquet: "Banquet Menu",
+  alacarte: "A La Carte Menu",
+  lunch: "Express Lunch Menu",
+  vegetarian: "Vegetarian Option",
+};
+
+const showMenuPanel = (panelName, updateHash = true) => {
+  if (!menuPanels.length) {
+    return;
+  }
+
+  const nextPanel = menuLabels[panelName] ? panelName : "banquet";
+
+  menuTabs.forEach((tab) => {
+    const isActive = tab.dataset.menuTab === nextPanel;
+    tab.classList.toggle("is-active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+  });
+
+  menuPanels.forEach((panel) => {
+    const isActive = panel.dataset.menuPanel === nextPanel;
+    panel.classList.toggle("is-active", isActive);
+    panel.toggleAttribute("hidden", !isActive);
+  });
+
+  if (menuTitle) {
+    menuTitle.textContent = menuLabels[nextPanel];
+  }
+
+  if (updateHash) {
+    history.replaceState(null, "", `#${nextPanel}`);
+  }
+};
+
+menuTabs.forEach((tab) => {
+  tab.setAttribute("role", "tab");
+  tab.addEventListener("click", (event) => {
+    event.preventDefault();
+    showMenuPanel(tab.dataset.menuTab);
+  });
+});
+
+if (menuPanels.length) {
+  const initialPanel = window.location.hash.replace("#", "") || "banquet";
+  showMenuPanel(initialPanel, false);
+}
+
 const revealTargets = document.querySelectorAll(
   ".section, .content-section:not(.menu-section), .feature-band, .about-band, .gallery-section, .page-hero-content, .hero-panel, .booking-card, .content-card, .event-card, .calendar-panel, .review-card, .beverage-feature, .function-card, .room-card, .gift-award-grid article"
 );

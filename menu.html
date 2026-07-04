@@ -26,10 +26,15 @@
       </section>
       <section class="content-section menu-section">
         <nav class="menu-tabs" aria-label="Menu sections">
-          <a href="#banquet">Banquet Menu</a><a href="#alacarte">A La Carte Menu</a><a href="#lunch">Express Lunch Menu</a><a href="#vegetarian">Vegetarian Option</a>
+          <a class="is-active" href="#banquet" data-menu-tab="banquet">Banquet Menu</a><a href="#alacarte" data-menu-tab="alacarte">A La Carte Menu</a><a href="#lunch" data-menu-tab="lunch">Express Lunch Menu</a><a href="#vegetarian" data-menu-tab="vegetarian">Vegetarian Option</a>
         </nav>
+        <header class="menu-section-heading">
+          <p class="eyebrow">Boundary Street</p>
+          <h2 data-menu-title>Banquet Menu</h2>
+          <p>Menu items are subject to change based on ingredient availability. Seafood origin: (A) Australian, (I) Imported, (M) Mixed origin.</p>
+        </header>
         <div class="menu-list">
-          <article id="banquet" class="menu-block">
+          <article id="banquet" class="menu-block is-active" data-menu-panel="banquet">
             <div class="menu-block-heading">
               <p class="eyebrow">Shared style, minimum 2 guests</p>
               <h2>Wagyu Shabu Shabu Set</h2>
@@ -46,7 +51,7 @@
               <div class="dish-item"><h3>Shabu Shabu Hot Pot</h3><p>One pot between 2 guests. MB5 wagyu 60g per person with sesame sauce and ponzu sauce.</p></div>
             </div>
           </article>
-          <article class="menu-block">
+          <article class="menu-block is-active" data-menu-panel="banquet">
             <div class="menu-block-heading">
               <p class="eyebrow">GFO, whole table participation</p>
               <h2>Natsu Banquet</h2>
@@ -67,7 +72,7 @@
               <div class="dish-item"><h3>Omakase Dessert</h3><p>Mystery dessert.</p></div>
             </div>
           </article>
-          <article class="menu-block">
+          <article class="menu-block is-active" data-menu-panel="banquet">
             <div class="menu-block-heading">
               <p class="eyebrow">Signature experience</p>
               <h2>Traveller - IPPIN Experience</h2>
@@ -93,7 +98,7 @@
               <p>3-course wine pairing 60pp</p>
             </aside>
           </article>
-          <article id="vegetarian" class="menu-block">
+          <article id="vegetarian" class="menu-block" data-menu-panel="vegetarian">
             <div class="menu-block-heading">
               <p class="eyebrow">Pre-order via email only</p>
               <h2>Gen - Vegetarian Set Menu</h2>
@@ -141,7 +146,7 @@
               </section>
             </div>
           </article>
-          <article id="alacarte" class="menu-block">
+          <article id="alacarte" class="menu-block menu-block-large" data-menu-panel="alacarte">
             <div class="menu-block-heading">
               <p class="eyebrow">All-day dining</p>
               <h2>A La Carte Menu</h2>
@@ -258,7 +263,7 @@
               </section>
             </div>
           </article>
-          <article id="lunch" class="menu-block">
+          <article id="lunch" class="menu-block" data-menu-panel="lunch">
             <div class="menu-block-heading">
               <p class="eyebrow">7 days available, ordering by 2:30pm</p>
               <h2>Express Lunch Menu</h2>
