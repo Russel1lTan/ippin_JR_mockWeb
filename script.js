@@ -37,6 +37,11 @@ const ensureFloatingCta = () => {
   if (!floatingCta.isConnected) {
     document.body.append(floatingCta);
   }
+
+  const bookingCta = floatingCta.querySelector(".floating-cta-book");
+  if (bookingCta) {
+    bookingCta.textContent = "\u3054\u4e88\u7d04\u306f\u3053\u3061\u3089 RESERVATION HERE";
+  }
 };
 
 syncActiveLinks();
@@ -66,7 +71,7 @@ loadMore?.addEventListener("click", () => {
 });
 
 const revealTargets = document.querySelectorAll(
-  ".section, .content-section, .feature-band, .about-band, .gallery-section, .page-hero-content, .hero-panel, .booking-card, .content-card, .menu-block, .event-card, .calendar-panel, .review-card, .beverage-feature, .function-card, .room-card, .gift-award-grid article, .dish-item, .compact-dish"
+  ".section, .content-section:not(.menu-section), .feature-band, .about-band, .gallery-section, .page-hero-content, .hero-panel, .booking-card, .content-card, .event-card, .calendar-panel, .review-card, .beverage-feature, .function-card, .room-card, .gift-award-grid article"
 );
 
 if (reduceMotion) {
@@ -136,26 +141,6 @@ document.querySelectorAll(".calendar-has-event").forEach((day) => {
   });
 });
 
-if (!reduceMotion) {
-  const hero = document.querySelector(".hero");
-  hero?.addEventListener("pointermove", (event) => {
-    const rect = hero.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-    hero.querySelectorAll(".hero-panel img").forEach((image, index) => {
-      const depth = (index + 1) * 5;
-      image.style.transform = `scale(1.05) translate(${x * depth}px, ${y * depth}px)`;
-    });
-  });
-
-  hero?.addEventListener("pointerleave", () => {
-    hero.querySelectorAll(".hero-panel img").forEach((image) => {
-      image.style.transform = "";
-    });
-  });
-}
-
 if (!document.querySelector(".site-footer")) {
   const footer = document.createElement("footer");
   footer.id = "contact";
@@ -199,6 +184,10 @@ if (!document.querySelector(".site-footer")) {
     </div>
   `;
   document.body.append(footer);
+  const generatedBookCta = footer.querySelector(".footer-cta a:last-child");
+  if (generatedBookCta) {
+    generatedBookCta.textContent = "\u3054\u4e88\u7d04\u306f\u3053\u3061\u3089 Reservation Here";
+  }
 }
 
 ensureFloatingCta();
