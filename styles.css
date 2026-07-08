@@ -1813,6 +1813,14 @@ h3 {
   grid-column: span 12;
 }
 
+.menu-block-large[data-menu-panel="lunch"] .menu-category:nth-of-type(n) {
+  grid-column: span 4;
+}
+
+.menu-block-large[data-menu-panel="vegetarian"] .menu-category:nth-of-type(n) {
+  grid-column: span 3;
+}
+
 .menu-category h3 {
   margin-bottom: 16px;
   font-family: "Times New Roman", Georgia, serif;

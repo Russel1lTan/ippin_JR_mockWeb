@@ -244,7 +244,7 @@ const renderFeatureMenuBlock = (item, panelId, index = 0) => `
 
 const renderCompositeMenuBlock = (section) => {
   const mainItem = section.items?.[0];
-  const isLarge = section.id === "alacarte";
+  const isLarge = ["alacarte", "lunch", "vegetarian"].includes(section.id);
   const headingTitle = mainItem?.title || section.label;
   const headingEyebrow = mainItem?.eyebrow || section.eyebrow || "";
   const headingPrice = mainItem?.price || "";

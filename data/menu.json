@@ -127,7 +127,6 @@
         },
         {
           "title": "Gen - Vegetarian Set Menu",
-          "price": "62pp",
           "eyebrow": "Pre-order via email only",
           "summary": "To book the Vegetarian Set Menu, please email reservation@ippin-wv.com.au. Pre-order required at least one day in advance. This menu is available by email booking only and cannot be booked through the online booking system.",
           "image": "https://static.wixstatic.com/media/0e0390_4eda4788f43a46faa9e54149b3eea268~mv2.jpg/v1/fit/w_960,h_1442,q_90,enc_avif,quality_auto/0e0390_4eda4788f43a46faa9e54149b3eea268~mv2.jpg",
@@ -180,342 +179,414 @@
       ],
       "categories": [
         {
-          "title": "Starter",
+          "title": "Starter | 前菜",
           "dishes": [
             {
               "name": "Oyster",
+              "price": "",
               "note": "GF, A. Natural, ponzu sauce or yuzu kosho."
             },
             {
               "name": "Spicy Garlic & Ginger Edamame",
+              "price": "",
               "note": "GF, VEG. With garlic, ginger and mild spice."
             },
             {
               "name": "Scallop In Shell",
+              "price": "",
               "note": "GF, I. Two pieces with ikura and yuzu kosho."
             },
             {
               "name": "Wagyu Beef Tataki",
+              "price": "",
               "note": "GF. Citrus sauce and fried garlic."
             },
             {
               "name": "Tiradito Ceviche",
+              "price": "",
               "note": "GF, A. Select kingfish, tuna or salmon."
             },
             {
               "name": "Kaviari Caviar Set",
+              "price": "",
               "note": "GFO, I. Oscietra 20g, nori tempura and tuna."
             }
           ]
         },
         {
-          "title": "Small Plates",
+          "title": "Small Plates | 小鉢",
           "dishes": [
             {
               "name": "Agedashi Tofu",
+              "price": "",
               "note": "GF, VEGO. Tsuyu sauce, bonito and chives."
             },
             {
               "name": "Snow Crab Rice Croquette",
+              "price": "",
               "note": "I. Three pieces, dairy included."
             },
             {
               "name": "Mentaiko Scallops Yaki",
+              "price": "",
               "note": "I. Two grilled scallops with onion, mushroom and mentaiko mayo."
             },
             {
               "name": "Chicken Karaage Bao",
+              "price": "",
               "note": "Two pieces with spicy mayo and dark sauce."
             }
           ]
         },
         {
-          "title": "Salad & Greens",
+          "title": "Salad & Greens | サラダ",
           "dishes": [
             {
               "name": "Green Salad",
+              "price": "",
               "note": "GFO, VEG. With sesame dressing."
             },
             {
               "name": "Wagyu Beef Salad",
+              "price": "",
               "note": "With sesame dressing."
             }
           ]
         },
         {
-          "title": "Sashimi Selection",
-          "note": "Please inform staff ahead if you have a shellfish allergy.",
+          "title": "Sashimi Selection (GF)",
           "dishes": [
             {
               "name": "Salmon",
+              "price": "",
               "note": "GF, A. Five pieces."
             },
             {
               "name": "Kingfish",
+              "price": "",
               "note": "GF, A. Five pieces."
             },
             {
               "name": "Tuna",
+              "price": "",
               "note": "GF, A. Five pieces."
             },
             {
               "name": "Tuna Toro",
+              "price": "",
               "note": "Seasonal, M. 50g."
             },
             {
               "name": "Sea Urchin",
+              "price": "",
               "note": "Seasonal. 50g."
             },
             {
               "name": "Sashimi Set",
+              "price": "",
               "note": "M. Nine pieces, catch of the day."
             },
             {
               "name": "Premium Sashimi Set",
+              "price": "",
               "note": "M. Eleven chef-selected sashimi."
             },
             {
               "name": "Sashimi Platter",
+              "price": "",
               "note": "M. Eighteen pieces, catch of the day."
             },
             {
               "name": "Deluxe Sashimi Platter",
+              "price": "",
               "note": "M. Twenty-four pieces, daily selection from sea urchin, toro and more."
             }
-          ]
+          ],
+          "note": "Please be aware that the daily selection may include shellfish. If you have a shellfish allergy, kindly inform our staff ahead."
         },
         {
-          "title": "Nigiri",
-          "note": "Additional $5 for caviar add-on per serve.",
+          "title": "Nigiri | 握り",
           "dishes": [
             {
               "name": "Salmon",
+              "price": "",
               "note": "GF, A. Two pieces."
             },
             {
               "name": "Salmon Belly",
+              "price": "",
               "note": "GF, A. Two pieces."
             },
             {
               "name": "Tuna",
+              "price": "",
               "note": "GF, A. Two pieces."
             },
             {
               "name": "Kingfish",
+              "price": "",
               "note": "GF, A. Two pieces."
             },
             {
               "name": "Hokkaido Scallop",
+              "price": "",
               "note": "GF, I. Two pieces."
             },
             {
               "name": "Unagi",
+              "price": "",
               "note": "I. Two pieces."
             },
             {
               "name": "Raw Crystal Prawn",
+              "price": "",
               "note": "GF, I. Two pieces."
             },
             {
               "name": "Ikura",
+              "price": "",
               "note": "GF, I. Two pieces, salmon roe."
             },
             {
               "name": "Sea Urchin",
+              "price": "",
               "note": "GF, A. One piece."
             },
             {
               "name": "A4 Kagoshima Wagyu Aburi",
+              "price": "",
               "note": "One piece with foie gras."
             },
             {
               "name": "Nigiri Set",
+              "price": "",
               "note": "GF, M. Six pieces, nature or aburi, chef-selected daily fish."
             },
             {
               "name": "Chef's Omakase Nigiri",
+              "price": "",
               "note": "GFO, M. Twelve pieces, chef-selected daily fish."
             }
-          ]
+          ],
+          "note": "Additional $5 for caviar add-on per serve."
         },
         {
-          "title": "Sushi Roll",
+          "title": "Sushi Roll | 巻き",
           "dishes": [
             {
               "name": "Vegetable Roll",
+              "price": "",
               "note": "GFO, VEG."
             },
             {
               "name": "Salmon Roll",
+              "price": "",
               "note": "GFO, A. Natural or spicy."
             },
             {
               "name": "Tuna Roll",
+              "price": "",
               "note": "GFO, A. Natural or spicy."
             },
             {
               "name": "Popcorn Prawn Roll",
+              "price": "",
               "note": "GFO, M."
             },
             {
               "name": "Spider Roll",
+              "price": "",
               "note": "GF, I. Softshell crab."
             },
             {
               "name": "Wagyu Beef Roll",
+              "price": "",
               "note": "GFO. Plum and shiso, cucumber."
             },
             {
               "name": "Salmon Aburi Roll",
+              "price": "",
               "note": "GFO, M. Caramel miso and prawn."
             },
             {
               "name": "Volcano Roll",
+              "price": "",
               "note": "M. Crab meat and scallop."
             }
           ]
         },
         {
-          "title": "Deep Fried",
-          "note": "Deep fried items share oil, so celiac and vegan options cannot be 100% guaranteed.",
+          "title": "Deep Fried | 揚げ物",
           "dishes": [
             {
               "name": "Karaage Chicken",
+              "price": "",
               "note": "GF. With spicy mayo."
             },
             {
               "name": "Crunchy King Prawn",
+              "price": "",
               "note": "GFO, M. Five pieces covered with chef special mayo."
             },
             {
               "name": "Soft Shell Crab Tempura",
+              "price": "",
               "note": "I."
             },
             {
               "name": "Veggie Tempura",
+              "price": "",
               "note": "GFO, VEGO. Nine pieces. GF option +$3."
             },
             {
               "name": "Assorted Tempura",
+              "price": "",
               "note": "GFO, M. Ten pieces. GF option +$3."
             },
             {
               "name": "Lobster Tempura",
+              "price": "",
               "note": "GFO, A. GF option +$3."
             }
-          ]
+          ],
+          "note": "Deep fried items share oil, so celiac and vegan options cannot be 100% guaranteed."
         },
         {
-          "title": "Charcoal / Grill",
+          "title": "Charcoal / Grill | 焼き物",
           "dishes": [
             {
               "name": "King Oyster Mushroom Skewers",
+              "price": "",
               "note": "GFO. Two pieces with yakitori sauce."
             },
             {
               "name": "Chicken Skewers",
+              "price": "",
               "note": "GFO. Two pieces with yakitori sauce and spring onion."
             },
             {
               "name": "Pork Skewers",
+              "price": "",
               "note": "GFO. Two pieces with yakitori sauce and rose pickle shallot."
             },
             {
               "name": "Wagyu Skewer",
+              "price": "",
               "note": "One piece."
             },
             {
               "name": "Miso Eggplant",
+              "price": "",
               "note": "VEG. Pink peppercorn and homemade dengaku miso."
             },
             {
               "name": "Teriyaki Salmon",
+              "price": "",
               "note": "A. 160g with pickle and egg miso."
             },
             {
               "name": "Robata Duck Breast",
+              "price": "",
               "note": "Grilled leek and rose pickled shallot."
             },
             {
               "name": "Wagyu Sirloin MB4+",
+              "price": "",
               "note": "GFO. 160g with miso, onion shallots sauces and pickle."
             },
             {
               "name": "Japanese A4 Sirloin Wagyu",
+              "price": "",
               "note": "GFO. 100g with daily grilled vegetables and dengaku miso sauce."
             },
             {
               "name": "Glacier 51 Tooth-Fish",
+              "price": "",
               "note": "I. 110g, three days saikyo miso marinated, pickle and egg miso."
             }
           ]
         },
         {
-          "title": "Nabemono & Rice",
+          "title": "Nabemono & Rice | 鍋物 & ご飯類",
           "dishes": [
             {
               "name": "Yasai Nabe Shabu Shabu",
+              "price": "",
               "note": "VEGO. Daily selected vegetables, tofu and two steamed rice."
             },
             {
               "name": "King Crab Shabu Shabu",
+              "price": "",
               "note": "I. 180g, daily selected vegetables, tofu and two steamed rice."
             },
             {
               "name": "Japanese Wagyu A4 Shabu Shabu",
+              "price": "",
               "note": "100g, daily selected vegetables, tofu and two steamed rice."
             },
             {
               "name": "Australian Wagyu MB5 Shabu Shabu",
+              "price": "",
               "note": "120g, daily selected vegetables, tofu and two steamed rice."
             },
             {
               "name": "Takana Vegetable Fried Rice",
+              "price": "",
               "note": "VEG."
             },
             {
               "name": "Salmon Fried Rice",
+              "price": "",
               "note": "GF, A."
             },
             {
               "name": "Wagyu Beef Fried Rice",
+              "price": "",
               "note": "GF."
             },
             {
               "name": "Steamed Rice",
+              "price": "",
               "note": ""
             },
             {
               "name": "Miso Soup",
+              "price": "",
               "note": ""
             }
           ]
         },
         {
-          "title": "Dessert",
+          "title": "Dessert | 甘味",
           "dishes": [
             {
               "name": "Zen Bonsai",
+              "price": "",
               "note": ""
             },
             {
               "name": "Housemade Warabi Mochi",
+              "price": "",
               "note": "GF, DFO."
             },
             {
               "name": "Matcha Creme Brulee",
+              "price": "",
               "note": ""
             },
             {
               "name": "Vanilla Ice Cream",
+              "price": "",
               "note": "GF. Walnuts, kinako and kuromitsu."
             },
             {
               "name": "Matcha Ice Cream",
+              "price": "",
               "note": "GFO. Walnuts and Pocky stick."
             },
             {
               "name": "Yuzu Sorbet",
+              "price": "",
               "note": "GF, DF. With lemon jelly."
             }
           ]
@@ -536,27 +607,22 @@
           "dishes": [
             {
               "name": "Wagyu Sirloin MB4+",
-              "price": "38.8",
               "note": "GFO. 80g with miso, onion shallot sauce and homemade pickle."
             },
             {
               "name": "Grilled Unagi",
-              "price": "34.8",
               "note": "I. With tamagoyaki and homemade pickle."
             },
             {
               "name": "Karaage Chicken",
-              "price": "26.8",
               "note": "GF. With spicy mayo."
             },
             {
               "name": "Teriyaki Salmon",
-              "price": "45.8",
               "note": "GFO, A. 160g with egg miso and homemade pickle."
             },
             {
               "name": "Glacier 51 Tooth-Fish",
-              "price": "55.8",
               "note": "I. Three days saikyo miso marinated, pickle and egg miso."
             }
           ]
@@ -566,7 +632,6 @@
           "dishes": [
             {
               "name": "Vegetarian Set",
-              "price": "29.8",
               "note": "VEG. Green salad, agedashi tofu, miso eggplant, grilled king oyster mushroom, vegetables tempura, green roll with mayo and miso soup."
             }
           ]
@@ -576,17 +641,14 @@
           "dishes": [
             {
               "name": "Daily Limited Chirashi Don",
-              "price": "22.8",
               "note": "GF, M. Assorted sashimi with miso soup."
             },
             {
               "name": "Salmon Don",
-              "price": "24.8",
               "note": "GF, A. Aburi additional $3, with miso soup."
             },
             {
               "name": "Wagyu Udon Noodle Soup",
-              "price": "28.8",
               "note": "IPPIN special beef soup and lemon."
             }
           ]
@@ -599,7 +661,6 @@
       "items": [
         {
           "title": "Gen - Vegetarian Set Menu",
-          "price": "62pp",
           "eyebrow": "Pre-order via email only",
           "summary": "To book the Vegetarian Set Menu, please email reservation@ippin-wv.com.au. Pre-order required at least one day in advance. This menu is available by email booking only and cannot be booked through the online booking system.",
           "image": "https://static.wixstatic.com/media/0e0390_4eda4788f43a46faa9e54149b3eea268~mv2.jpg/v1/fit/w_960,h_1442,q_90,enc_avif,quality_auto/0e0390_4eda4788f43a46faa9e54149b3eea268~mv2.jpg",
@@ -639,36 +700,40 @@
       "categories": [
         {
           "title": "Vegetarian Lunch",
-          "note": "7 days, 11:00am - 2:30pm.",
           "dishes": [
             {
               "name": "Vegetarian Set",
-              "price": "29.8",
               "note": "Green salad, agedashi tofu, miso eggplant, grilled king oyster mushroom, vegetables tempura, green roll with mayo and miso soup."
             }
-          ]
+          ],
+          "note": "7 days, 11:00am - 2:30pm."
         },
         {
           "title": "Starter / Share",
           "dishes": [
             {
               "name": "Edamame",
+              "price": "",
               "note": "GF, VEG."
             },
             {
               "name": "Spicy Garlic & Ginger Edamame",
+              "price": "",
               "note": "GF, VEG. With garlic, ginger and mild spice."
             },
             {
               "name": "Agedashi Tofu",
+              "price": "",
               "note": "GF, VEGO. Tsuyu sauce, bonito and chives."
             },
             {
               "name": "King Oyster Mushroom Skewers",
+              "price": "",
               "note": "VEGO. Two pieces."
             },
             {
               "name": "Green Salad",
+              "price": "",
               "note": "GFO, VEG. With sesame dressing."
             }
           ]
@@ -678,14 +743,17 @@
           "dishes": [
             {
               "name": "Vegetable Roll",
+              "price": "",
               "note": "GFO, VEG."
             },
             {
               "name": "Miso Eggplant",
+              "price": "",
               "note": "VEG. Pink peppercorn and homemade dengaku miso."
             },
             {
               "name": "Takana Vegetable Fried Rice",
+              "price": "",
               "note": "VEG."
             }
           ]
@@ -695,14 +763,17 @@
           "dishes": [
             {
               "name": "Vanilla Ice Cream",
+              "price": "",
               "note": "GF. Walnuts, kinako and kuromitsu."
             },
             {
               "name": "Matcha Ice Cream",
+              "price": "",
               "note": "GFO. Walnuts and Pocky stick."
             },
             {
               "name": "Yuzu Sorbet",
+              "price": "",
               "note": "GF, DF. With lemon jelly."
             }
           ]
