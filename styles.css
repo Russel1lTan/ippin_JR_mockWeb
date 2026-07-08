@@ -1170,6 +1170,41 @@ h3 {
   transform: scale(1.035);
 }
 
+.event-card-award {
+  background:
+    radial-gradient(circle at 28% 18%, rgba(216, 177, 90, 0.18), transparent 30%),
+    linear-gradient(145deg, #120d0c, #050302 72%);
+  color: #fffaf3;
+}
+
+.event-card-award img {
+  width: 78%;
+  height: auto;
+  min-height: 0;
+  max-height: 280px;
+  align-self: center;
+  justify-self: center;
+  object-fit: contain;
+  filter: drop-shadow(0 0 26px rgba(216, 177, 90, 0.2));
+}
+
+.event-card-award:hover img {
+  filter: drop-shadow(0 0 34px rgba(216, 177, 90, 0.32));
+  transform: scale(1.025);
+}
+
+.event-card-award .eyebrow {
+  color: rgba(216, 177, 90, 0.88);
+}
+
+.event-card-award p:not(.eyebrow) {
+  color: rgba(255, 250, 243, 0.78);
+}
+
+.event-card-award .text-link {
+  color: #fff2d0;
+}
+
 .event-card > div {
   align-self: center;
   padding: clamp(24px, 4vw, 46px);
@@ -1462,6 +1497,43 @@ h3 {
 
 .event-detail-section {
   padding-top: 0;
+}
+
+.wine-pairing-detail {
+  color: var(--ink);
+}
+
+.wine-pairing-detail .menu-block-heading {
+  border-bottom-color: rgba(68, 3, 19, 0.18);
+}
+
+.wine-pairing-detail .menu-block-heading h2,
+.wine-pairing-detail .menu-category h3 {
+  color: var(--ink);
+}
+
+.wine-pairing-detail p,
+.wine-pairing-detail li {
+  color: rgba(59, 2, 2, 0.82);
+}
+
+.wine-pairing-detail .menu-category {
+  border-color: rgba(68, 3, 19, 0.18);
+  background: rgba(255, 250, 243, 0.86);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.wine-pairing-detail .compact-dish {
+  border-top-color: rgba(68, 3, 19, 0.16);
+  color: var(--ink);
+}
+
+.wine-pairing-detail .compact-dish p {
+  color: rgba(59, 2, 2, 0.68);
+}
+
+.wine-pairing-detail .text-link {
+  color: var(--ink);
 }
 
 .content-card,
