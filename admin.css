@@ -109,6 +109,13 @@ button:disabled {
   color: var(--paper);
 }
 
+.admin-sidebar .publish:not(:disabled) {
+  border-color: var(--gold);
+  background: rgba(216, 177, 90, 0.14);
+  color: var(--gold);
+  box-shadow: 0 0 24px rgba(216, 177, 90, 0.18);
+}
+
 .admin-workspace {
   padding: clamp(24px, 4vw, 54px);
 }

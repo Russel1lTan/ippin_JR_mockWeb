@@ -28,10 +28,14 @@ const state = {
 const statusEl = document.querySelector("#status");
 const saveAllButton = document.querySelector("#save-all");
 const openFolderButton = document.querySelector("#open-folder");
+const publishOnlineButton = document.querySelector("#publish-online");
 const eventList = document.querySelector("#event-list");
 const menuList = document.querySelector("#menu-list");
 const menuSectionSelect = document.querySelector("#menu-section");
 const siteForm = document.querySelector("#site-form");
+
+const isLocalMaintenanceServer =
+  location.protocol.startsWith("http") && ["localhost", "127.0.0.1"].includes(location.hostname);
 
 const setStatus = (message) => {
   statusEl.textContent = message;
@@ -67,6 +71,44 @@ const writeJsonFile = async (key) => {
   const writable = await handle.createWritable();
   await writable.write(`${JSON.stringify(state.data[key], null, 2)}\n`);
   await writable.close();
+};
+
+const requestJson = async (url, options = {}) => {
+  const response = await fetch(url, {
+    headers: { "Content-Type": "application/json", ...(options.headers || {}) },
+    ...options,
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || payload.ok === false) {
+    throw new Error(payload.error || `Request failed: ${response.status}`);
+  }
+  return payload;
+};
+
+const collectFormState = () => {
+  state.data.events.year = Number(document.querySelector("#events-year").value);
+  state.data.events.month = Number(document.querySelector("#events-month").value);
+};
+
+const loadFromServer = async () => {
+  const payload = await requestJson("/api/data");
+  state.data.events = payload.events || structuredClone(defaults.events);
+  state.data.menu = payload.menu || structuredClone(defaults.menu);
+  state.data.site = payload.site || structuredClone(defaults.site);
+  renderAll();
+  saveAllButton.disabled = false;
+  publishOnlineButton.disabled = false;
+  openFolderButton.textContent = "Reload Local Data";
+  setStatus("Loaded through local maintenance server. Save or publish when ready.");
+};
+
+const saveToServer = async () => {
+  collectFormState();
+  await requestJson("/api/save", {
+    method: "POST",
+    body: JSON.stringify(state.data),
+  });
+  setStatus(`Saved locally at ${new Date().toLocaleTimeString()}. Click Publish Online to update GitHub Pages.`);
 };
 
 const updateObjectField = (object, field, value) => {
@@ -318,6 +360,15 @@ const renderAll = () => {
 };
 
 openFolderButton.addEventListener("click", async () => {
+  if (isLocalMaintenanceServer) {
+    try {
+      await loadFromServer();
+    } catch (error) {
+      setStatus(`Could not load local data: ${error.message}`);
+    }
+    return;
+  }
+
   if (!window.showDirectoryPicker) {
     setStatus("Your browser does not support folder editing. Use Chrome or Edge.");
     return;
@@ -331,10 +382,40 @@ openFolderButton.addEventListener("click", async () => {
 });
 
 saveAllButton.addEventListener("click", async () => {
-  state.data.events.year = Number(document.querySelector("#events-year").value);
-  state.data.events.month = Number(document.querySelector("#events-month").value);
+  if (isLocalMaintenanceServer) {
+    try {
+      await saveToServer();
+    } catch (error) {
+      setStatus(`Save failed: ${error.message}`);
+    }
+    return;
+  }
+
+  collectFormState();
   await Promise.all([writeJsonFile("events"), writeJsonFile("menu"), writeJsonFile("site")]);
   setStatus(`Saved locally at ${new Date().toLocaleTimeString()}. To publish: git add data && git commit && git push.`);
+});
+
+publishOnlineButton.addEventListener("click", async () => {
+  if (!isLocalMaintenanceServer) {
+    setStatus("Publishing is available when admin.html is opened through npm run admin.");
+    return;
+  }
+
+  publishOnlineButton.disabled = true;
+  saveAllButton.disabled = true;
+  setStatus("Saving and publishing to GitHub Pages...");
+
+  try {
+    await saveToServer();
+    const payload = await requestJson("/api/publish", { method: "POST" });
+    setStatus(payload.message || "Published online. GitHub Pages may take a minute to refresh.");
+  } catch (error) {
+    setStatus(`Publish failed: ${error.message}`);
+  } finally {
+    publishOnlineButton.disabled = false;
+    saveAllButton.disabled = false;
+  }
 });
 
 document.querySelector("#add-event").addEventListener("click", () => {
@@ -377,3 +458,9 @@ document.querySelectorAll("[data-admin-tab]").forEach((tab) => {
     });
   });
 });
+
+if (isLocalMaintenanceServer) {
+  loadFromServer().catch((error) => {
+    setStatus(`Local server detected, but data could not load: ${error.message}`);
+  });
+}

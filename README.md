@@ -6,7 +6,21 @@ Open `index.html` directly in a browser to view it. The replica uses remote Wix 
 
 ## Maintenance Panel
 
-Open `admin.html` in Chrome or Edge to edit daily content without touching the page HTML.
+For one-click publishing, run the local maintenance server:
+
+```powershell
+npm run admin
+```
+
+Then open:
+
+- http://127.0.0.1:8787/admin.html
+
+Edit events, menu data, or site information, then click `Save All Data` or `Publish Online`.
+
+`Publish Online` saves the JSON files, creates a Git commit, and pushes `master` to GitHub. GitHub Pages may take a minute to refresh.
+
+If you open `admin.html` directly from the file system, it still works as a local-only editor:
 
 1. Click `Open Website Folder`.
 2. Choose this project folder: `C:\Users\11vac\Desktop\IPPIN`.

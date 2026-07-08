@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "admin": "node server.js"
+  }
+}
