@@ -1906,28 +1906,22 @@ h3 {
   display: grid;
   grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1fr);
   gap: clamp(34px, 7vw, 110px);
-  align-items: stretch;
+  align-items: center;
   min-height: calc(100vh - 104px);
   padding: clamp(34px, 7vw, 110px);
 }
 
 .bottomless-hero figure {
-  display: flex;
   margin: 0;
 }
 
 .bottomless-hero img {
-  height: 100%;
-  min-height: 620px;
   max-height: 760px;
   object-fit: cover;
 }
 
 .bottomless-copy {
-  display: flex;
-  flex-direction: column;
   max-width: 780px;
-  padding: clamp(16px, 2vw, 30px) 0;
 }
 
 .bottomless-copy h1 {
@@ -1966,10 +1960,9 @@ h3 {
 
 .responsible-note {
   display: grid;
-  gap: clamp(22px, 3vh, 34px);
+  gap: 16px;
   max-width: 620px;
-  margin-top: auto;
-  padding-top: clamp(34px, 6vh, 76px);
+  margin-top: 4px;
   color: rgba(255, 250, 243, 0.74);
   font-size: 12px !important;
   line-height: 1.45 !important;
@@ -2435,22 +2428,13 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .bottomless-hero {
-    align-items: start;
-  }
-
   .bottomless-hero img {
-    min-height: 0;
     max-height: none;
   }
 
-  .bottomless-copy {
-    padding: 0;
-  }
-
   .responsible-note {
-    margin-top: 20px;
-    padding-top: 22px;
+    gap: 14px;
+    margin-top: 6px;
   }
 
   .menu-block-large .menu-category,
