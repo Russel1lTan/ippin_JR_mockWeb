@@ -114,6 +114,51 @@ const courseArrayFromText = (text) =>
       return { name, note: noteParts.join(" | ") };
     });
 
+const categoryTextFromArray = (categories = []) =>
+  categories
+    .map((category) => {
+      const lines = [`# ${category.title || "Category"}`];
+      if (category.note) {
+        lines.push(`! ${category.note}`);
+      }
+      (category.dishes || []).forEach((dish) => {
+        lines.push(`${dish.name || ""}${dish.price ? ` | ${dish.price}` : " | "}${dish.note ? ` | ${dish.note}` : ""}`);
+      });
+      return lines.join("\n");
+    })
+    .join("\n\n");
+
+const categoryArrayFromText = (text) => {
+  const categories = [];
+  let currentCategory = null;
+
+  text.split("\n").forEach((rawLine) => {
+    const line = rawLine.trim();
+    if (!line) return;
+
+    if (line.startsWith("#")) {
+      currentCategory = { title: line.replace(/^#+/, "").trim(), dishes: [] };
+      categories.push(currentCategory);
+      return;
+    }
+
+    if (!currentCategory) {
+      currentCategory = { title: "Category", dishes: [] };
+      categories.push(currentCategory);
+    }
+
+    if (line.startsWith("!")) {
+      currentCategory.note = line.replace(/^!+/, "").trim();
+      return;
+    }
+
+    const [name = "", price = "", ...noteParts] = line.split("|").map((part) => part.trim());
+    currentCategory.dishes.push({ name, price, note: noteParts.join(" | ") });
+  });
+
+  return categories;
+};
+
 const activeMenuSection = () =>
   state.data.menu.sections.find((section) => section.id === menuSectionSelect.value) ||
   state.data.menu.sections[0];
@@ -137,7 +182,43 @@ const renderMenu = () => {
     return;
   }
 
-  section.items.forEach((item, index) => {
+  const metaCard = document.createElement("article");
+  metaCard.className = "editor-card";
+  metaCard.innerHTML = `
+    <div class="card-actions"><strong>Section Settings</strong></div>
+    <div class="field-grid">
+      <label>Label <input data-section-field="label" type="text"></label>
+      <label>Eyebrow <input data-section-field="eyebrow" type="text"></label>
+      <label class="full">Summary <textarea data-section-field="summary" rows="3"></textarea></label>
+      <label class="full">Image URL <input data-section-field="image" type="url"></label>
+      <label class="full">Highlights, comma separated <input data-section-field="highlightsText" type="text"></label>
+      <label class="full">Categories<br><small># Category, ! note, then Dish | Price | Note</small><textarea data-section-field="categoriesText" rows="12"></textarea></label>
+    </div>
+  `;
+  metaCard.querySelectorAll("[data-section-field]").forEach((input) => {
+    const field = input.dataset.sectionField;
+    if (field === "highlightsText") {
+      input.value = (section.highlights || []).join(", ");
+    } else if (field === "categoriesText") {
+      input.value = categoryTextFromArray(section.categories);
+    } else {
+      input.value = section[field] || "";
+    }
+    input.addEventListener("input", () => {
+      if (field === "highlightsText") {
+        section.highlights = input.value.split(",").map((item) => item.trim()).filter(Boolean);
+      } else if (field === "categoriesText") {
+        section.categories = categoryArrayFromText(input.value);
+      } else {
+        section[field] = input.value;
+      }
+      renderMenuSelect();
+      menuSectionSelect.value = section.id;
+    });
+  });
+  menuList.append(metaCard);
+
+  (section.items || []).forEach((item, index) => {
     const node = document.querySelector("#menu-template").content.cloneNode(true);
     const card = node.querySelector(".editor-card");
     card.querySelector("[data-card-title]").textContent = item.title || `Menu item ${index + 1}`;
@@ -168,12 +249,18 @@ const renderSite = () => {
   siteForm.innerHTML = "";
   const fields = [
     "restaurantName",
+    "shortName",
+    "copyrightYear",
     "address",
     "phone",
     "aiBookingPhone",
     "reservationEmail",
     "managerEmail",
     "bookingUrl",
+    "findUsUrl",
+    "logoUrl",
+    "agfgVoteUrl",
+    "agfgVoteImage",
   ];
 
   fields.forEach((field) => {
@@ -208,6 +295,19 @@ const renderSite = () => {
   });
   serviceTimes.append(textarea);
   siteForm.append(serviceTimes);
+
+  const ctas = document.createElement("label");
+  ctas.className = "full";
+  ctas.textContent = "Footer CTAs";
+  const ctaTextarea = document.createElement("textarea");
+  ctaTextarea.rows = 3;
+  ctaTextarea.value = `${state.data.site.footerCtas?.find || ""}\n${state.data.site.footerCtas?.book || ""}`;
+  ctaTextarea.addEventListener("input", () => {
+    const [find = "", book = ""] = ctaTextarea.value.split("\n");
+    state.data.site.footerCtas = { find: find.trim(), book: book.trim() };
+  });
+  ctas.append(ctaTextarea);
+  siteForm.append(ctas);
 };
 
 const renderAll = () => {
@@ -251,6 +351,9 @@ document.querySelector("#add-event").addEventListener("click", () => {
 document.querySelector("#add-menu-item").addEventListener("click", () => {
   const section = activeMenuSection();
   if (!section) return;
+  if (!section.items) {
+    section.items = [];
+  }
   section.items.push({
     title: "New Menu Item",
     price: "",

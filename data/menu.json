@@ -1,4 +1,12 @@
 {
+  "location": "Boundary Street",
+  "notice": "Menu items are subject to change based on ingredient availability. Seafood origin: (A) Australian, (I) Imported, (M) Mixed origin.",
+  "hero": {
+    "eyebrow": "Banquet menu",
+    "title": "FULL\nMENU",
+    "image": "https://static.wixstatic.com/media/0e0390_82dffec8723f45d1ae2a62dec75133c5~mv2.jpeg/v1/fit/w_960,h_1442,q_90,enc_avif,quality_auto/0e0390_82dffec8723f45d1ae2a62dec75133c5~mv2.jpeg",
+    "imageAlt": "IPPIN banquet"
+  },
   "sections": [
     {
       "id": "banquet",
@@ -10,83 +18,187 @@
           "eyebrow": "Shared style, minimum 2 guests",
           "summary": "From June. Shared style. No alterations available. Excludes public holidays. Monday - Thursday ordering by 8pm.",
           "image": "https://static.wixstatic.com/media/0e0390_3e0e5bea068249308253389de2bd61bf~mv2.jpg/v1/fill/w_964,h_1824,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Hot%20Pot%20Set%20May%202026-11.jpg",
+          "imageAlt": "Wagyu shabu shabu hot pot set",
           "courses": [
-            {
-              "name": "Spicy Edamame",
-              "note": "GF. With ginger and garlic."
-            },
-            {
-              "name": "Sashimi Carpaccio",
-              "note": "A. With a light yuzu dressing."
-            },
-            {
-              "name": "Vegetable Tempura & Prawn Tempura",
-              "note": "M. Seasonal vegetable tempura, fresh oyster tempura and wasabi salt."
-            },
-            {
-              "name": "Shabu Shabu Hot Pot",
-              "note": "One pot between 2 guests. MB5 wagyu 60g per person with sesame sauce and ponzu sauce."
-            }
+            { "name": "Spicy Edamame", "note": "GF. With ginger and garlic." },
+            { "name": "Sashimi Carpaccio", "note": "A. With a light yuzu dressing." },
+            { "name": "Vegetable Tempura & Prawn Tempura", "note": "M. Two pieces of seasonal vegetable tempura, fresh oyster tempura and wasabi salt." },
+            { "name": "Shabu Shabu Hot Pot", "note": "One pot between 2 guests. MB5 wagyu 60g per person with sesame sauce and ponzu sauce." }
           ]
         },
         {
           "title": "Natsu Banquet",
           "price": "58pp",
           "eyebrow": "GFO, whole table participation",
-          "summary": "A curated selection of seasonal dishes designed for sharing.",
+          "summary": "A curated selection of seasonal dishes designed for sharing, from delicate starters to signature mains and handcrafted desserts. Whole table participation only, minimum 2 guests. Monday - Thursday ordering by 8pm. Friday - Sunday ordering by 6pm.",
           "image": "https://static.wixstatic.com/media/0e0390_3245d3a718ea4245b90fd5e37d47f45e~mv2.jpg/v1/fill/w_964,h_1824,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_25A8154.jpg",
+          "imageAlt": "Natsu banquet dish",
           "courses": [
-            {
-              "name": "Spicy Garlic & Ginger Edamame",
-              "note": "GF, VEG. With garlic, ginger and mild spice."
-            },
-            {
-              "name": "Green Salad",
-              "note": "GFO, VEG. With sesame dressing."
-            },
-            {
-              "name": "Sashimi",
-              "note": "GF, M. Three pieces, catch of the day."
-            },
-            {
-              "name": "Wasabi Crunchy Prawn",
-              "note": "GFO, M. With tomato wasabi mayo."
-            },
-            {
-              "name": "Omakase Dessert",
-              "note": "Mystery dessert."
-            }
+            { "name": "Spicy Garlic & Ginger Edamame", "note": "GF, VEG. With garlic, ginger and mild spice." },
+            { "name": "Green Salad", "note": "GFO, VEG. With sesame dressing." },
+            { "name": "Sashimi", "note": "GF, M. Three pieces, catch of the day." },
+            { "name": "Wasabi Crunchy Prawn", "note": "GFO, M. With tomato wasabi mayo." },
+            { "name": "Salmon Aburi Roll", "note": "M. With shiso aioli, cucumber and crab meat." },
+            { "name": "Angus Sirloin MB2+", "note": "Morel mushroom and mixed mushrooms miso cream, served with steamed rice and miso." },
+            { "name": "Omakase Dessert", "note": "Mystery dessert." }
           ]
+        },
+        {
+          "title": "Traveller - IPPIN Experience",
+          "price": "108pp",
+          "eyebrow": "Signature experience",
+          "summary": "Whole table only. Minimum 1 guest. Available 7 days, ordering by 8pm.",
+          "image": "https://static.wixstatic.com/media/0e0390_be99e4b95a544e539fc1c6ca92b2c23a~mv2.jpg/v1/fit/w_960,h_1446,q_90,enc_avif,quality_auto/0e0390_be99e4b95a544e539fc1c6ca92b2c23a~mv2.jpg",
+          "imageAlt": "Traveller IPPIN experience plating",
+          "courses": [
+            { "name": "Wagyu Beef Tataki", "note": "With seaweed sauce, cucumber and tosaka." },
+            { "name": "Sashimi", "note": "GF, M. Three pieces plus Japanese sweet prawns, catch of the day." },
+            { "name": "Fish Tempura", "note": "GFO, A. With genmaicha dashi sauce and sesame." },
+            { "name": "Mentaiko Scallops Yaki", "note": "GFO, I. Grilled scallops with mentaiko mayo, onion and mushroom." },
+            { "name": "Australian Wagyu Sirloin MB5+", "note": "GFO. With miso butter, onion shallots sauces and pickle." },
+            { "name": "Omakase Nigiri", "note": "GF, M. Catch of the day." },
+            { "name": "Hotate Shinjo Osuimono", "note": "GF, M. Clean soup with seafood cake." },
+            { "name": "Omakase Dessert", "note": "Mystery dessert." }
+          ],
+          "pairing": {
+            "title": "Wine Pairing Experience",
+            "lines": ["5-course wine and sake pairing 110pp", "3-course wine pairing 60pp"]
+          }
         }
       ]
     },
     {
       "id": "alacarte",
       "label": "A La Carte Menu",
-      "items": [
+      "eyebrow": "All-day dining",
+      "summary": "At IPPIN Japanese Dining, the team makes every effort to accommodate individual dietary needs. Please inform staff of allergies or intolerances.",
+      "image": "https://static.wixstatic.com/media/0e0390_7d5bb6c4c006486c9dbcb662bd7f5219~mv2.jpg/v1/fit/w_960,h_1440,q_90,enc_avif,quality_auto/0e0390_7d5bb6c4c006486c9dbcb662bd7f5219~mv2.jpg",
+      "imageAlt": "A la carte sashimi and sake pairing",
+      "highlights": ["Raw Bar", "Sashimi", "Nigiri", "Robata", "Nabe"],
+      "categories": [
+        {
+          "title": "Starter",
+          "dishes": [
+            { "name": "Oyster", "note": "GF, A. Natural, ponzu sauce or yuzu kosho." },
+            { "name": "Spicy Garlic & Ginger Edamame", "note": "GF, VEG. With garlic, ginger and mild spice." },
+            { "name": "Scallop In Shell", "note": "GF, I. Two pieces with ikura and yuzu kosho." },
+            { "name": "Wagyu Beef Tataki", "note": "GF. Citrus sauce and fried garlic." },
+            { "name": "Tiradito Ceviche", "note": "GF, A. Select kingfish, tuna or salmon." },
+            { "name": "Kaviari Caviar Set", "note": "GFO, I. Oscietra 20g, nori tempura and tuna." }
+          ]
+        },
+        {
+          "title": "Small Plates",
+          "dishes": [
+            { "name": "Agedashi Tofu", "note": "GF, VEGO. Tsuyu sauce, bonito and chives." },
+            { "name": "Snow Crab Rice Croquette", "note": "I. Three pieces, dairy included." },
+            { "name": "Mentaiko Scallops Yaki", "note": "I. Two grilled scallops with onion, mushroom and mentaiko mayo." },
+            { "name": "Chicken Karaage Bao", "note": "Two pieces with spicy mayo and dark sauce." }
+          ]
+        },
+        {
+          "title": "Salad & Greens",
+          "dishes": [
+            { "name": "Green Salad", "note": "GFO, VEG. With sesame dressing." },
+            { "name": "Wagyu Beef Salad", "note": "With sesame dressing." }
+          ]
+        },
         {
           "title": "Sashimi Selection",
-          "price": "",
-          "eyebrow": "Raw bar",
-          "summary": "Chef-selected sashimi and seasonal seafood.",
-          "image": "https://static.wixstatic.com/media/0e0390_7d5bb6c4c006486c9dbcb662bd7f5219~mv2.jpg/v1/fit/w_960,h_1440,q_90,enc_avif,quality_auto/0e0390_7d5bb6c4c006486c9dbcb662bd7f5219~mv2.jpg",
-          "courses": [
-            {
-              "name": "Salmon",
-              "note": "GF, A. Five pieces."
-            },
-            {
-              "name": "Kingfish",
-              "note": "GF, A. Five pieces."
-            },
-            {
-              "name": "Tuna",
-              "note": "GF, A. Five pieces."
-            },
-            {
-              "name": "Premium Sashimi Set",
-              "note": "M. Eleven chef-selected sashimi."
-            }
+          "note": "Please inform staff ahead if you have a shellfish allergy.",
+          "dishes": [
+            { "name": "Salmon", "note": "GF, A. Five pieces." },
+            { "name": "Kingfish", "note": "GF, A. Five pieces." },
+            { "name": "Tuna", "note": "GF, A. Five pieces." },
+            { "name": "Tuna Toro", "note": "Seasonal, M. 50g." },
+            { "name": "Sea Urchin", "note": "Seasonal. 50g." },
+            { "name": "Sashimi Set", "note": "M. Nine pieces, catch of the day." },
+            { "name": "Premium Sashimi Set", "note": "M. Eleven chef-selected sashimi." },
+            { "name": "Sashimi Platter", "note": "M. Eighteen pieces, catch of the day." },
+            { "name": "Deluxe Sashimi Platter", "note": "M. Twenty-four pieces, daily selection from sea urchin, toro and more." }
+          ]
+        },
+        {
+          "title": "Nigiri",
+          "note": "Additional $5 for caviar add-on per serve.",
+          "dishes": [
+            { "name": "Salmon", "note": "GF, A. Two pieces." },
+            { "name": "Salmon Belly", "note": "GF, A. Two pieces." },
+            { "name": "Tuna", "note": "GF, A. Two pieces." },
+            { "name": "Kingfish", "note": "GF, A. Two pieces." },
+            { "name": "Hokkaido Scallop", "note": "GF, I. Two pieces." },
+            { "name": "Unagi", "note": "I. Two pieces." },
+            { "name": "Raw Crystal Prawn", "note": "GF, I. Two pieces." },
+            { "name": "Ikura", "note": "GF, I. Two pieces, salmon roe." },
+            { "name": "Sea Urchin", "note": "GF, A. One piece." },
+            { "name": "A4 Kagoshima Wagyu Aburi", "note": "One piece with foie gras." },
+            { "name": "Nigiri Set", "note": "GF, M. Six pieces, nature or aburi, chef-selected daily fish." },
+            { "name": "Chef's Omakase Nigiri", "note": "GFO, M. Twelve pieces, chef-selected daily fish." }
+          ]
+        },
+        {
+          "title": "Sushi Roll",
+          "dishes": [
+            { "name": "Vegetable Roll", "note": "GFO, VEG." },
+            { "name": "Salmon Roll", "note": "GFO, A. Natural or spicy." },
+            { "name": "Tuna Roll", "note": "GFO, A. Natural or spicy." },
+            { "name": "Popcorn Prawn Roll", "note": "GFO, M." },
+            { "name": "Spider Roll", "note": "GF, I. Softshell crab." },
+            { "name": "Wagyu Beef Roll", "note": "GFO. Plum and shiso, cucumber." },
+            { "name": "Salmon Aburi Roll", "note": "GFO, M. Caramel miso and prawn." },
+            { "name": "Volcano Roll", "note": "M. Crab meat and scallop." }
+          ]
+        },
+        {
+          "title": "Deep Fried",
+          "note": "Deep fried items share oil, so celiac and vegan options cannot be 100% guaranteed.",
+          "dishes": [
+            { "name": "Karaage Chicken", "note": "GF. With spicy mayo." },
+            { "name": "Crunchy King Prawn", "note": "GFO, M. Five pieces covered with chef special mayo." },
+            { "name": "Soft Shell Crab Tempura", "note": "I." },
+            { "name": "Veggie Tempura", "note": "GFO, VEGO. Nine pieces. GF option +$3." },
+            { "name": "Assorted Tempura", "note": "GFO, M. Ten pieces. GF option +$3." },
+            { "name": "Lobster Tempura", "note": "GFO, A. GF option +$3." }
+          ]
+        },
+        {
+          "title": "Charcoal / Grill",
+          "dishes": [
+            { "name": "King Oyster Mushroom Skewers", "note": "GFO. Two pieces with yakitori sauce." },
+            { "name": "Chicken Skewers", "note": "GFO. Two pieces with yakitori sauce and spring onion." },
+            { "name": "Pork Skewers", "note": "GFO. Two pieces with yakitori sauce and rose pickle shallot." },
+            { "name": "Wagyu Skewer", "note": "One piece." },
+            { "name": "Miso Eggplant", "note": "VEG. Pink peppercorn and homemade dengaku miso." },
+            { "name": "Teriyaki Salmon", "note": "A. 160g with pickle and egg miso." },
+            { "name": "Robata Duck Breast", "note": "Grilled leek and rose pickled shallot." },
+            { "name": "Wagyu Sirloin MB4+", "note": "GFO. 160g with miso, onion shallots sauces and pickle." },
+            { "name": "Japanese A4 Sirloin Wagyu", "note": "GFO. 100g with daily grilled vegetables and dengaku miso sauce." },
+            { "name": "Glacier 51 Tooth-Fish", "note": "I. 110g, three days saikyo miso marinated, pickle and egg miso." }
+          ]
+        },
+        {
+          "title": "Nabemono & Rice",
+          "dishes": [
+            { "name": "Yasai Nabe Shabu Shabu", "note": "VEGO. Daily selected vegetables, tofu and two steamed rice." },
+            { "name": "King Crab Shabu Shabu", "note": "I. 180g, daily selected vegetables, tofu and two steamed rice." },
+            { "name": "Japanese Wagyu A4 Shabu Shabu", "note": "100g, daily selected vegetables, tofu and two steamed rice." },
+            { "name": "Australian Wagyu MB5 Shabu Shabu", "note": "120g, daily selected vegetables, tofu and two steamed rice." },
+            { "name": "Takana Vegetable Fried Rice", "note": "VEG." },
+            { "name": "Salmon Fried Rice", "note": "GF, A." },
+            { "name": "Wagyu Beef Fried Rice", "note": "GF." },
+            { "name": "Steamed Rice", "note": "" },
+            { "name": "Miso Soup", "note": "" }
+          ]
+        },
+        {
+          "title": "Dessert",
+          "dishes": [
+            { "name": "Zen Bonsai", "note": "" },
+            { "name": "Housemade Warabi Mochi", "note": "GF, DFO." },
+            { "name": "Matcha Creme Brulee", "note": "" },
+            { "name": "Vanilla Ice Cream", "note": "GF. Walnuts, kinako and kuromitsu." },
+            { "name": "Matcha Ice Cream", "note": "GFO. Walnuts and Pocky stick." },
+            { "name": "Yuzu Sorbet", "note": "GF, DF. With lemon jelly." }
           ]
         }
       ]
@@ -94,26 +206,34 @@
     {
       "id": "lunch",
       "label": "Express Lunch Menu",
-      "items": [
+      "eyebrow": "7 days available, ordering by 2:30pm",
+      "summary": "Enjoy a lunch meal featuring catch of the day sashimi, a main course with rice and miso soup.",
+      "image": "https://static.wixstatic.com/media/0e0390_df03315dafb2499ca8273dcddd769c67~mv2.jpg/v1/fill/w_726,h_1814,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_25A5124_edited.jpg",
+      "imageAlt": "Express lunch menu dish",
+      "categories": [
         {
           "title": "Express Lunch Set",
-          "price": "",
-          "eyebrow": "7 days available, ordering by 2:30pm",
-          "summary": "Lunch meals with catch of the day sashimi, a main course, rice and miso soup.",
-          "image": "https://static.wixstatic.com/media/0e0390_df03315dafb2499ca8273dcddd769c67~mv2.jpg/v1/fill/w_726,h_1814,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_25A5124_edited.jpg",
-          "courses": [
-            {
-              "name": "Wagyu Sirloin MB4+",
-              "note": "38.8. GFO. 80g with miso, onion shallot sauce and homemade pickle."
-            },
-            {
-              "name": "Karaage Chicken",
-              "note": "26.8. GF. With spicy mayo."
-            },
-            {
-              "name": "Daily Limited Chirashi Don",
-              "note": "22.8. GF, M. Assorted sashimi with miso soup."
-            }
+          "note": "With catch of the day sashimi, miso soup and steamed rice.",
+          "dishes": [
+            { "name": "Wagyu Sirloin MB4+", "price": "38.8", "note": "GFO. 80g with miso, onion shallot sauce and homemade pickle." },
+            { "name": "Grilled Unagi", "price": "34.8", "note": "I. With tamagoyaki and homemade pickle." },
+            { "name": "Karaage Chicken", "price": "26.8", "note": "GF. With spicy mayo." },
+            { "name": "Teriyaki Salmon", "price": "45.8", "note": "GFO, A. 160g with egg miso and homemade pickle." },
+            { "name": "Glacier 51 Tooth-Fish", "price": "55.8", "note": "I. Three days saikyo miso marinated, pickle and egg miso." }
+          ]
+        },
+        {
+          "title": "Vegetarian",
+          "dishes": [
+            { "name": "Vegetarian Set", "price": "29.8", "note": "VEG. Green salad, agedashi tofu, miso eggplant, grilled king oyster mushroom, vegetables tempura, green roll with mayo and miso soup." }
+          ]
+        },
+        {
+          "title": "Lunch Specials Bowl",
+          "dishes": [
+            { "name": "Daily Limited Chirashi Don", "price": "22.8", "note": "GF, M. Assorted sashimi with miso soup." },
+            { "name": "Salmon Don", "price": "24.8", "note": "GF, A. Aburi additional $3, with miso soup." },
+            { "name": "Wagyu Udon Noodle Soup", "price": "28.8", "note": "IPPIN special beef soup and lemon." }
           ]
         }
       ]
@@ -126,25 +246,52 @@
           "title": "Gen - Vegetarian Set Menu",
           "price": "62pp",
           "eyebrow": "Pre-order via email only",
-          "summary": "Pre-order required at least one day in advance.",
+          "summary": "To book the Vegetarian Set Menu, please email reservation@ippin-wv.com.au. Pre-order required at least one day in advance. This menu is available by email booking only and cannot be booked through the online booking system.",
           "image": "https://static.wixstatic.com/media/0e0390_4eda4788f43a46faa9e54149b3eea268~mv2.jpg/v1/fit/w_960,h_1442,q_90,enc_avif,quality_auto/0e0390_4eda4788f43a46faa9e54149b3eea268~mv2.jpg",
+          "imageAlt": "Vegetarian menu plating",
           "courses": [
-            {
-              "name": "Spicy Garlic & Ginger Edamame",
-              "note": "GF, VEG. With garlic, ginger and mild spice."
-            },
-            {
-              "name": "Vegan Tuna & Yuzu Kosho",
-              "note": "Radish, tosaka seaweed and watermelon."
-            },
-            {
-              "name": "Miso Eggplant",
-              "note": "Pink peppercorn."
-            },
-            {
-              "name": "Omakase Dessert",
-              "note": "Chef's choice dessert."
-            }
+            { "name": "Spicy Garlic & Ginger Edamame", "note": "GF, VEG. With garlic, ginger and mild spice." },
+            { "name": "Vegan Tuna & Yuzu Kosho", "note": "Radish, tosaka seaweed and watermelon." },
+            { "name": "Steamed Cabbage Roll", "note": "Kombu dashi sauce, carrot, gobo, lotus root, seaweed and fried spring onion." },
+            { "name": "Sesame Tofu", "note": "Winter bamboo, edamame, Japanese taro and ginkgo." },
+            { "name": "Miso Eggplant", "note": "Pink peppercorn." },
+            { "name": "Mazegohan", "note": "Mixed mushrooms, truffle oil and shiso. Served with miso soup." },
+            { "name": "Omakase Dessert", "note": "Chef's choice dessert." }
+          ]
+        }
+      ],
+      "categories": [
+        {
+          "title": "Vegetarian Lunch",
+          "note": "7 days, 11:00am - 2:30pm.",
+          "dishes": [
+            { "name": "Vegetarian Set", "price": "29.8", "note": "Green salad, agedashi tofu, miso eggplant, grilled king oyster mushroom, vegetables tempura, green roll with mayo and miso soup." }
+          ]
+        },
+        {
+          "title": "Starter / Share",
+          "dishes": [
+            { "name": "Edamame", "note": "GF, VEG." },
+            { "name": "Spicy Garlic & Ginger Edamame", "note": "GF, VEG. With garlic, ginger and mild spice." },
+            { "name": "Agedashi Tofu", "note": "GF, VEGO. Tsuyu sauce, bonito and chives." },
+            { "name": "King Oyster Mushroom Skewers", "note": "VEGO. Two pieces." },
+            { "name": "Green Salad", "note": "GFO, VEG. With sesame dressing." }
+          ]
+        },
+        {
+          "title": "Main",
+          "dishes": [
+            { "name": "Vegetable Roll", "note": "GFO, VEG." },
+            { "name": "Miso Eggplant", "note": "VEG. Pink peppercorn and homemade dengaku miso." },
+            { "name": "Takana Vegetable Fried Rice", "note": "VEG." }
+          ]
+        },
+        {
+          "title": "Dessert",
+          "dishes": [
+            { "name": "Vanilla Ice Cream", "note": "GF. Walnuts, kinako and kuromitsu." },
+            { "name": "Matcha Ice Cream", "note": "GFO. Walnuts and Pocky stick." },
+            { "name": "Yuzu Sorbet", "note": "GF, DF. With lemon jelly." }
           ]
         }
       ]

@@ -17,8 +17,8 @@ Open `admin.html` in Chrome or Edge to edit daily content without touching the p
 Editable data files:
 
 - `data/events.json` - drives the What's On calendar on `whatson.html`.
-- `data/menu.json` - structured menu content for easier menu maintenance.
-- `data/site.json` - restaurant contact and service-time source data.
+- `data/menu.json` - drives the Full Menu tabs, menu items, categories and dish lists on `menu.html`.
+- `data/site.json` - drives shared footer contact details, service times, AGFG badge data and floating CTA links.
 
 Chrome may ask for folder permission because the editor writes directly to local files. This is expected.
 
@@ -50,8 +50,6 @@ Remote repository:
 ## Next Improvements
 
 - Visually compare each local page against desktop and mobile screenshots from the live site.
-- Connect every menu display block to `data/menu.json` once the final menu layout is locked.
-- Connect repeated contact/footer text to `data/site.json` if frequent service-hour updates are expected.
 - Replace remote Wix image URLs with owned local image files if IPPIN supplies originals.
 - Consider extracting repeated navigation/footer markup into a build step if this grows beyond static HTML.
 - Add deployment instructions once a GitHub repository or hosting target is chosen.

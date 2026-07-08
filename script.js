@@ -3,12 +3,63 @@ const siteNav = document.querySelector(".site-nav");
 const loadMore = document.querySelector(".load-more");
 const gallery = document.querySelector(".gallery-section");
 const siteHeader = document.querySelector(".site-header");
-const bookingUrl = "https://www.sevenrooms.com/explore/ippinjapanesedining/reservations/create/search/";
-const findUsUrl = "about.html#contact-details";
-const logoUrl = "https://static.wixstatic.com/media/0e0390_657064e383634f6a9622112d2a5b7fb5~mv2.png/v1/fill/w_588,h_240,al_c,q_95,usm_0.66_1.00_0.01,enc_avif,quality_auto/Ippin_Wordmark_White.png";
+const siteDefaults = {
+  restaurantName: "IPPIN JAPANESE DINING",
+  shortName: "IPPIN",
+  copyrightYear: "2026",
+  address: "The Garden Pavilion, West Village, Level 2/97 Boundary St, West End QLD 4101",
+  phone: "1800 749 177 or 0432 111 287",
+  aiBookingPhone: "0468 153 749",
+  reservationEmail: "reservation@ippin-wv.com.au",
+  managerEmail: "manager@ippin-wv.com.au",
+  bookingUrl: "https://www.sevenrooms.com/explore/ippinjapanesedining/reservations/create/search/",
+  findUsUrl: "about.html#contact-details",
+  logoUrl:
+    "https://static.wixstatic.com/media/0e0390_657064e383634f6a9622112d2a5b7fb5~mv2.png/v1/fill/w_588,h_240,al_c,q_95,usm_0.66_1.00_0.01,enc_avif,quality_auto/Ippin_Wordmark_White.png",
+  agfgVoteUrl: "https://www.agfg.com.au/restaurant/ippin-japanese-dining-118894",
+  agfgVoteImage: "https://media1.agfg.com.au/images/links/voteforus-sq-140x80.png",
+  footerCtas: {
+    find: "FIND US EASILY | CLICK HERE",
+    book: "\u3054\u4e88\u7d04\u306f\u3053\u3061\u3089 RESERVATION HERE",
+  },
+  serviceTimes: [
+    { days: "Mon-Thu", hours: "11:00am-2:30pm | 5:00pm-10:00pm", lastOrders: "Kitchen last orders: 9:00pm" },
+    { days: "Fri-Sat", hours: "11:00am-late", lastOrders: "Kitchen last orders: 9:30pm" },
+    { days: "Sun", hours: "11:00am-9:00pm", lastOrders: "Kitchen last orders: 9:00pm" },
+  ],
+  footerLinks: [
+    { label: "WHAT'S ON", href: "whatson.html" },
+    { label: "FULL MENU", href: "menu.html" },
+    { label: "FUNCTIONS", href: "functions.html" },
+    { label: "CONTACT", href: "about.html#contact-details" },
+    { label: "E-GIFT CARD", href: "gift-card.html" },
+  ],
+};
+let bookingUrl = siteDefaults.bookingUrl;
+let findUsUrl = siteDefaults.findUsUrl;
+let logoUrl = siteDefaults.logoUrl;
+let floatingFindLabel = siteDefaults.footerCtas.find;
+let floatingBookLabel = siteDefaults.footerCtas.book;
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+const escapeHtml = (value = "") =>
+  String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+const escapeAttribute = escapeHtml;
+
+const fetchJson = (path) =>
+  fetch(`${path}?v=${Date.now()}`, { cache: "no-store" }).then((response) => {
+    if (!response.ok) {
+      throw new Error(`Unable to load ${path}`);
+    }
+    return response.json();
+  });
 
 const syncActiveLinks = () => {
   document.querySelectorAll(".site-nav a, .footer-bottom a").forEach((link) => {
@@ -38,9 +89,14 @@ const ensureFloatingCta = () => {
     document.body.append(floatingCta);
   }
 
+  const findCtaText = floatingCta.querySelector(".floating-cta-find span:first-child");
+  if (findCtaText) {
+    findCtaText.textContent = floatingFindLabel;
+  }
+
   const bookingCta = floatingCta.querySelector(".floating-cta-book");
   if (bookingCta) {
-    bookingCta.textContent = "\u3054\u4e88\u7d04\u306f\u3053\u3061\u3089 RESERVATION HERE";
+    bookingCta.textContent = floatingBookLabel;
   }
 };
 
@@ -70,22 +126,29 @@ loadMore?.addEventListener("click", () => {
   loadMore.textContent = expanded ? "Show Less" : "Load More";
 });
 
-const menuTabs = document.querySelectorAll("[data-menu-tab]");
-const menuPanels = document.querySelectorAll("[data-menu-panel]");
+let menuTabs = document.querySelectorAll("[data-menu-tab]");
+let menuPanels = document.querySelectorAll("[data-menu-panel]");
 const menuTitle = document.querySelector("[data-menu-title]");
-const menuLabels = {
+let menuLabels = {
   banquet: "Banquet Menu",
   alacarte: "A La Carte Menu",
   lunch: "Express Lunch Menu",
   vegetarian: "Vegetarian Option",
 };
 
+const refreshMenuRefs = () => {
+  menuTabs = document.querySelectorAll("[data-menu-tab]");
+  menuPanels = document.querySelectorAll("[data-menu-panel]");
+};
+
 const showMenuPanel = (panelName, updateHash = true) => {
+  refreshMenuRefs();
   if (!menuPanels.length) {
     return;
   }
 
-  const nextPanel = menuLabels[panelName] ? panelName : "banquet";
+  const firstPanel = Object.keys(menuLabels)[0] || "banquet";
+  const nextPanel = menuLabels[panelName] ? panelName : firstPanel;
 
   menuTabs.forEach((tab) => {
     const isActive = tab.dataset.menuTab === nextPanel;
@@ -108,17 +171,173 @@ const showMenuPanel = (panelName, updateHash = true) => {
   }
 };
 
-menuTabs.forEach((tab) => {
-  tab.setAttribute("role", "tab");
-  tab.addEventListener("click", (event) => {
-    event.preventDefault();
-    showMenuPanel(tab.dataset.menuTab);
+const bindMenuTabs = () => {
+  refreshMenuRefs();
+  menuTabs.forEach((tab) => {
+    tab.setAttribute("role", "tab");
+    tab.addEventListener("click", (event) => {
+      event.preventDefault();
+      showMenuPanel(tab.dataset.menuTab);
+    });
   });
-});
+};
+
+const renderDishList = (courses = []) =>
+  courses
+    .map(
+      (course) => `
+        <div class="dish-item">
+          <h3>${escapeHtml(course.name)}</h3>
+          ${course.note ? `<p>${escapeHtml(course.note)}</p>` : ""}
+        </div>
+      `
+    )
+    .join("");
+
+const renderCompactDish = (dish) => `
+  <div class="compact-dish">
+    <span>${escapeHtml(dish.name)}</span>
+    ${dish.price ? `<em>${escapeHtml(dish.price)}</em>` : ""}
+    ${dish.note ? `<p>${escapeHtml(dish.note)}</p>` : ""}
+  </div>
+`;
+
+const renderMenuCategories = (categories = []) =>
+  categories
+    .map(
+      (category) => `
+        <section class="menu-category">
+          <h3>${escapeHtml(category.title)}</h3>
+          ${category.note ? `<p>${escapeHtml(category.note)}</p>` : ""}
+          ${(category.dishes || []).map(renderCompactDish).join("")}
+        </section>
+      `
+    )
+    .join("");
+
+const renderFeatureMenuBlock = (item, panelId, index = 0) => `
+  <article ${index === 0 ? `id="${escapeAttribute(panelId)}"` : ""} class="menu-block" data-menu-panel="${escapeAttribute(panelId)}">
+    <div class="menu-block-heading">
+      ${item.eyebrow ? `<p class="eyebrow">${escapeHtml(item.eyebrow)}</p>` : ""}
+      <h2>${escapeHtml(item.title)}</h2>
+      ${item.price ? `<strong>${escapeHtml(item.price)}</strong>` : ""}
+    </div>
+    ${
+      item.image
+        ? `<figure class="menu-block-image">
+            <img src="${escapeAttribute(item.image)}" alt="${escapeAttribute(item.imageAlt || item.title)}">
+          </figure>`
+        : ""
+    }
+    ${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ""}
+    ${item.courses?.length ? `<div class="dish-list">${renderDishList(item.courses)}</div>` : ""}
+    ${
+      item.pairing
+        ? `<aside class="pairing-card">
+            <h3>${escapeHtml(item.pairing.title)}</h3>
+            ${(item.pairing.lines || []).map((line) => `<p>${escapeHtml(line)}</p>`).join("")}
+          </aside>`
+        : ""
+    }
+  </article>
+`;
+
+const renderCompositeMenuBlock = (section) => {
+  const mainItem = section.items?.[0];
+  const isLarge = section.id === "alacarte";
+  const headingTitle = mainItem?.title || section.label;
+  const headingEyebrow = mainItem?.eyebrow || section.eyebrow || "";
+  const headingPrice = mainItem?.price || "";
+  const image = mainItem?.image || section.image;
+  const imageAlt = mainItem?.imageAlt || section.imageAlt || headingTitle;
+  const summary = mainItem?.summary || section.summary || "";
+
+  return `
+    <article id="${escapeAttribute(section.id)}" class="menu-block ${isLarge ? "menu-block-large" : ""}" data-menu-panel="${escapeAttribute(section.id)}">
+      <div class="menu-block-heading">
+        ${headingEyebrow ? `<p class="eyebrow">${escapeHtml(headingEyebrow)}</p>` : ""}
+        <h2>${escapeHtml(headingTitle)}</h2>
+        ${headingPrice ? `<strong>${escapeHtml(headingPrice)}</strong>` : ""}
+      </div>
+      ${
+        image
+          ? `<figure class="menu-block-image ${isLarge || section.categories?.length ? "menu-block-image-wide" : ""}">
+              <img src="${escapeAttribute(image)}" alt="${escapeAttribute(imageAlt)}">
+            </figure>`
+          : ""
+      }
+      ${summary ? `<p>${escapeHtml(summary)}</p>` : ""}
+      ${
+        section.highlights?.length
+          ? `<div class="alacarte-highlights" aria-label="${escapeAttribute(section.label)} highlights">
+              ${section.highlights.map((highlight) => `<span>${escapeHtml(highlight)}</span>`).join("")}
+            </div>`
+          : ""
+      }
+      ${mainItem?.courses?.length ? `<div class="dish-list">${renderDishList(mainItem.courses)}</div>` : ""}
+      ${section.categories?.length ? `<div class="menu-category-grid">${renderMenuCategories(section.categories)}</div>` : ""}
+    </article>
+  `;
+};
+
+const renderMenuSection = (section) => {
+  if (section.id === "banquet") {
+    return (section.items || []).map((item, index) => renderFeatureMenuBlock(item, section.id, index)).join("");
+  }
+  return renderCompositeMenuBlock(section);
+};
+
+const renderMenuFromData = (menuData) => {
+  const tabsContainer = document.querySelector(".menu-tabs");
+  const menuList = document.querySelector(".menu-list");
+  const menuHeadingEyebrow = document.querySelector(".menu-section-heading .eyebrow");
+  const menuHeadingText = document.querySelector(".menu-section-heading p:last-child");
+  const pageHero = document.querySelector(".page-hero");
+
+  if (!tabsContainer || !menuList || !menuData?.sections?.length) {
+    return;
+  }
+
+  menuLabels = Object.fromEntries(menuData.sections.map((section) => [section.id, section.label]));
+  tabsContainer.innerHTML = menuData.sections
+    .map(
+      (section, index) =>
+        `<a class="${index === 0 ? "is-active" : ""}" href="#${escapeAttribute(section.id)}" data-menu-tab="${escapeAttribute(section.id)}">${escapeHtml(section.label)}</a>`
+    )
+    .join("");
+  menuList.innerHTML = menuData.sections.map(renderMenuSection).join("");
+
+  if (menuHeadingEyebrow) {
+    menuHeadingEyebrow.textContent = menuData.location || "Boundary Street";
+  }
+  if (menuHeadingText) {
+    menuHeadingText.textContent = menuData.notice || "";
+  }
+  if (pageHero && menuData.hero) {
+    const heroEyebrow = pageHero.querySelector(".eyebrow");
+    const heroTitle = pageHero.querySelector("h1");
+    const heroText = pageHero.querySelector(".page-hero-content p:last-child");
+    const heroImage = pageHero.querySelector("img");
+    if (heroEyebrow) heroEyebrow.textContent = menuData.hero.eyebrow || "";
+    if (heroTitle) heroTitle.innerHTML = escapeHtml(menuData.hero.title || "FULL\nMENU").replace(/\n/g, "<br>");
+    if (heroText) heroText.textContent = menuData.notice || "";
+    if (heroImage && menuData.hero.image) {
+      heroImage.src = menuData.hero.image;
+      heroImage.alt = menuData.hero.imageAlt || "IPPIN menu";
+    }
+  }
+
+  bindMenuTabs();
+  const initialPanel = window.location.hash.replace("#", "") || menuData.sections[0].id;
+  showMenuPanel(initialPanel, false);
+};
+
+bindMenuTabs();
 
 if (menuPanels.length) {
   const initialPanel = window.location.hash.replace("#", "") || "banquet";
   showMenuPanel(initialPanel, false);
+  fetchJson("data/menu.json").then(renderMenuFromData).catch(() => {});
 }
 
 const revealTargets = document.querySelectorAll(
@@ -165,13 +384,6 @@ const formatEventDate = (dateString) => {
     year: "numeric",
   });
 };
-
-const escapeAttribute = (value = "") =>
-  String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/"/g, "&quot;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
 
 const activateCalendarDay = (day) => {
   document.querySelectorAll(".calendar-has-event").forEach((eventDay) => {
@@ -324,3 +536,63 @@ if (!document.querySelector(".site-footer")) {
 
 ensureFloatingCta();
 syncActiveLinks();
+
+const renderFooterFromData = (site = siteDefaults) => {
+  bookingUrl = site.bookingUrl || siteDefaults.bookingUrl;
+  findUsUrl = site.findUsUrl || siteDefaults.findUsUrl;
+  logoUrl = site.logoUrl || siteDefaults.logoUrl;
+  floatingFindLabel = site.footerCtas?.find || siteDefaults.footerCtas.find;
+  floatingBookLabel = site.footerCtas?.book || siteDefaults.footerCtas.book;
+
+  const footer = document.querySelector(".site-footer") || document.createElement("footer");
+  const serviceTimes = site.serviceTimes?.length ? site.serviceTimes : siteDefaults.serviceTimes;
+  const footerLinks = site.footerLinks?.length ? site.footerLinks : siteDefaults.footerLinks;
+  const footerCtas = { ...siteDefaults.footerCtas, ...(site.footerCtas || {}) };
+
+  footer.id = "contact";
+  footer.className = "site-footer";
+  footer.innerHTML = `
+    <div class="footer-cta">
+      <a href="${escapeAttribute(findUsUrl)}">${escapeHtml(footerCtas.find)}</a>
+      <a href="${escapeAttribute(bookingUrl)}" target="_blank" rel="noreferrer">${escapeHtml(footerCtas.book)}</a>
+    </div>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <h2>${escapeHtml(site.restaurantName || siteDefaults.restaurantName)}</h2>
+        <img class="footer-brand-logo" src="${escapeAttribute(logoUrl)}" alt="${escapeAttribute(site.shortName || "IPPIN")}">
+        <a class="footer-agfg-vote" href="${escapeAttribute(site.agfgVoteUrl || siteDefaults.agfgVoteUrl)}" target="_blank" rel="noreferrer" aria-label="Vote for IPPIN on AGFG">
+          <img src="${escapeAttribute(site.agfgVoteImage || siteDefaults.agfgVoteImage)}" alt="AGFG vote for us">
+        </a>
+      </div>
+      <div>
+        <p>Address: ${escapeHtml(site.address || siteDefaults.address)}</p>
+        <p>${escapeHtml(site.phone || siteDefaults.phone)}</p>
+        <p>After hours? Try our AI booking assistant (Beta): ${escapeHtml(site.aiBookingPhone || siteDefaults.aiBookingPhone)}</p>
+        <p>To book, please email <a href="mailto:${escapeAttribute(site.reservationEmail || siteDefaults.reservationEmail)}">${escapeHtml(site.reservationEmail || siteDefaults.reservationEmail)}</a></p>
+        <p>For general enquiries, hiring, please email <a href="mailto:${escapeAttribute(site.managerEmail || siteDefaults.managerEmail)}">${escapeHtml(site.managerEmail || siteDefaults.managerEmail)}</a></p>
+      </div>
+      <div>
+        <h3>Service Time:</h3>
+        ${serviceTimes
+          .map((time) => `<p>${escapeHtml(time.days)}<br>${escapeHtml(time.hours)}<br>${escapeHtml(time.lastOrders)}</p>`)
+          .join("")}
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; ${escapeHtml(site.copyrightYear || siteDefaults.copyrightYear)} by ${escapeHtml(site.restaurantName || siteDefaults.restaurantName)}</span>
+      <div>
+        ${footerLinks.map((link) => `<a href="${escapeAttribute(link.href)}">${escapeHtml(link.label)}</a>`).join("")}
+      </div>
+    </div>
+  `;
+
+  if (!footer.isConnected) {
+    document.body.append(footer);
+  }
+
+  ensureFloatingCta();
+  syncActiveLinks();
+};
+
+renderFooterFromData(siteDefaults);
+fetchJson("data/site.json").then(renderFooterFromData).catch(() => {});
