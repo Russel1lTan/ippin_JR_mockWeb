@@ -159,9 +159,11 @@
               "name": "Omakase Dessert",
               "note": "Chef's choice dessert."
             }
-          ]
+          ],
+          "price": "62pp"
         }
-      ]
+      ],
+      "eyebrow": ""
     },
     {
       "id": "alacarte",
@@ -694,7 +696,8 @@
               "name": "Omakase Dessert",
               "note": "Chef's choice dessert."
             }
-          ]
+          ],
+          "price": "62pp"
         }
       ],
       "categories": [
