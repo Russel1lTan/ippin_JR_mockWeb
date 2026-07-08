@@ -1941,7 +1941,7 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin: 34px 0 24px;
+  margin: 34px 0 10px;
 }
 
 .bottomless-actions .ghost {
@@ -1959,9 +1959,22 @@ h3 {
 }
 
 .responsible-note {
+  display: grid;
+  gap: 6px;
   max-width: 620px;
-  color: rgba(255, 250, 243, 0.72);
-  font-size: 14px !important;
+  margin-top: 0;
+  color: rgba(255, 250, 243, 0.74);
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+.responsible-note strong {
+  color: #fff2d0;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 18px rgba(216, 177, 90, 0.28);
 }
 
 .feature-band h2 {
