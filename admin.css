@@ -28,11 +28,22 @@ body {
   position: sticky;
   top: 0;
   display: grid;
-  align-content: space-between;
+  grid-template-rows: auto 1fr auto;
+  gap: 28px;
   min-height: 100vh;
   padding: 34px;
   background: linear-gradient(180deg, var(--wine), var(--wine-deep));
   color: var(--paper);
+}
+
+.admin-actions {
+  position: sticky;
+  bottom: 34px;
+  display: grid;
+  gap: 14px;
+  align-self: end;
+  padding-top: 18px;
+  background: linear-gradient(180deg, rgba(37, 0, 8, 0), var(--wine-deep) 28%);
 }
 
 .eyebrow {
@@ -221,5 +232,11 @@ textarea {
     position: static;
     min-height: auto;
     gap: 22px;
+  }
+
+  .admin-actions {
+    position: static;
+    padding-top: 0;
+    background: transparent;
   }
 }
