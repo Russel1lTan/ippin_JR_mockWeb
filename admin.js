@@ -334,7 +334,7 @@ saveAllButton.addEventListener("click", async () => {
   state.data.events.year = Number(document.querySelector("#events-year").value);
   state.data.events.month = Number(document.querySelector("#events-month").value);
   await Promise.all([writeJsonFile("events"), writeJsonFile("menu"), writeJsonFile("site")]);
-  setStatus(`Saved ${new Date().toLocaleTimeString()}. Remember to git commit and push.`);
+  setStatus(`Saved locally at ${new Date().toLocaleTimeString()}. To publish: git add data && git commit && git push.`);
 });
 
 document.querySelector("#add-event").addEventListener("click", () => {

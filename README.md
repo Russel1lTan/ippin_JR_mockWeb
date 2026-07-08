@@ -12,7 +12,15 @@ Open `admin.html` in Chrome or Edge to edit daily content without touching the p
 2. Choose this project folder: `C:\Users\11vac\Desktop\IPPIN`.
 3. Edit events, menu data, or site information.
 4. Click `Save All Data`.
-5. Commit and push the changed JSON files.
+5. Publish the saved local changes:
+
+```powershell
+git add data
+git commit -m "Update site data"
+git push origin master
+```
+
+`Save All Data` only updates local JSON files. GitHub Pages updates after the commit is pushed.
 
 Editable data files:
 
@@ -52,4 +60,3 @@ Remote repository:
 - Visually compare each local page against desktop and mobile screenshots from the live site.
 - Replace remote Wix image URLs with owned local image files if IPPIN supplies originals.
 - Consider extracting repeated navigation/footer markup into a build step if this grows beyond static HTML.
-- Add deployment instructions once a GitHub repository or hosting target is chosen.
