@@ -20,6 +20,13 @@ Edit events, menu data, or site information, then click `Save All Data` or `Publ
 
 `Publish Online` saves the JSON files, creates a Git commit, and pushes `master` to GitHub. GitHub Pages may take a minute to refresh.
 
+Preview data-driven pages through the local server, for example:
+
+- http://127.0.0.1:8787/whatson.html
+- http://127.0.0.1:8787/menu.html
+
+Do not use `file:///C:/.../whatson.html` to check event or menu changes. Direct file previews can fail to load `data/*.json`, so the page may show its old static fallback content.
+
 If you open `admin.html` directly from the file system, it still works as a local-only editor:
 
 1. Click `Open Website Folder`.
@@ -47,7 +54,7 @@ Chrome may ask for folder permission because the editor writes directly to local
 ## Pages
 
 - `index.html` - homepage with hero panels, booking options, gallery, contact footer and real Virtual Tour / SevenRooms links.
-- `whatson.html` - What's On page with event sections and the July 2026 calendar table.
+- `whatson.html` - What's On page with event sections and a JSON-driven calendar table.
 - `menu.html` - full menu page covering Banquet, A La Carte, Express Lunch and Vegetarian Option states.
 - `bottomless.html` - Bottomless Lunch page.
 - `beverage.html` - Beverage Menu page with official Wine & Sake List PDF embedded from `assets/beverage-menu.pdf`.

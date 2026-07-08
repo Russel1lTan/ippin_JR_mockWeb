@@ -36,6 +36,7 @@ const siteForm = document.querySelector("#site-form");
 
 const isLocalMaintenanceServer =
   location.protocol.startsWith("http") && ["localhost", "127.0.0.1"].includes(location.hostname);
+const localPreviewUrl = `${location.origin}/whatson.html`;
 
 const setStatus = (message) => {
   statusEl.textContent = message;
@@ -99,7 +100,7 @@ const loadFromServer = async () => {
   saveAllButton.disabled = false;
   publishOnlineButton.disabled = false;
   openFolderButton.textContent = "Reload Local Data";
-  setStatus("Loaded through local maintenance server. Save or publish when ready.");
+  setStatus(`Loaded through local maintenance server. Preview changed pages at ${localPreviewUrl}.`);
 };
 
 const saveToServer = async () => {
@@ -108,7 +109,7 @@ const saveToServer = async () => {
     method: "POST",
     body: JSON.stringify(state.data),
   });
-  setStatus(`Saved locally at ${new Date().toLocaleTimeString()}. Click Publish Online to update GitHub Pages.`);
+  setStatus(`Saved locally at ${new Date().toLocaleTimeString()}. Preview at ${localPreviewUrl}, then publish online.`);
 };
 
 const updateObjectField = (object, field, value) => {
