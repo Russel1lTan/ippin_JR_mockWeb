@@ -34,10 +34,25 @@
     }
   ],
   "footerLinks": [
-    { "label": "WHAT'S ON", "href": "whatson.html" },
-    { "label": "FULL MENU", "href": "menu.html" },
-    { "label": "FUNCTIONS", "href": "functions.html" },
-    { "label": "CONTACT", "href": "about.html#contact-details" },
-    { "label": "E-GIFT CARD", "href": "gift-card.html" }
+    {
+      "label": "WHAT'S ON",
+      "href": "whatson.html"
+    },
+    {
+      "label": "FULL MENU",
+      "href": "menu.html"
+    },
+    {
+      "label": "FUNCTIONS",
+      "href": "functions.html"
+    },
+    {
+      "label": "CONTACT",
+      "href": "about.html#contact-details"
+    },
+    {
+      "label": "E-GIFT CARD",
+      "href": "gift-card.html"
+    }
   ]
 }
