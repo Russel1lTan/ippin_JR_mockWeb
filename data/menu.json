@@ -11,10 +11,22 @@
           "summary": "From June. Shared style. No alterations available. Excludes public holidays. Monday - Thursday ordering by 8pm.",
           "image": "https://static.wixstatic.com/media/0e0390_3e0e5bea068249308253389de2bd61bf~mv2.jpg/v1/fill/w_964,h_1824,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Hot%20Pot%20Set%20May%202026-11.jpg",
           "courses": [
-            { "name": "Spicy Edamame", "note": "GF. With ginger and garlic." },
-            { "name": "Sashimi Carpaccio", "note": "A. With a light yuzu dressing." },
-            { "name": "Vegetable Tempura & Prawn Tempura", "note": "M. Seasonal vegetable tempura, fresh oyster tempura and wasabi salt." },
-            { "name": "Shabu Shabu Hot Pot", "note": "One pot between 2 guests. MB5 wagyu 60g per person with sesame sauce and ponzu sauce." }
+            {
+              "name": "Spicy Edamame",
+              "note": "GF. With ginger and garlic."
+            },
+            {
+              "name": "Sashimi Carpaccio",
+              "note": "A. With a light yuzu dressing."
+            },
+            {
+              "name": "Vegetable Tempura & Prawn Tempura",
+              "note": "M. Seasonal vegetable tempura, fresh oyster tempura and wasabi salt."
+            },
+            {
+              "name": "Shabu Shabu Hot Pot",
+              "note": "One pot between 2 guests. MB5 wagyu 60g per person with sesame sauce and ponzu sauce."
+            }
           ]
         },
         {
@@ -24,11 +36,26 @@
           "summary": "A curated selection of seasonal dishes designed for sharing.",
           "image": "https://static.wixstatic.com/media/0e0390_3245d3a718ea4245b90fd5e37d47f45e~mv2.jpg/v1/fill/w_964,h_1824,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_25A8154.jpg",
           "courses": [
-            { "name": "Spicy Garlic & Ginger Edamame", "note": "GF, VEG. With garlic, ginger and mild spice." },
-            { "name": "Green Salad", "note": "GFO, VEG. With sesame dressing." },
-            { "name": "Sashimi", "note": "GF, M. Three pieces, catch of the day." },
-            { "name": "Wasabi Crunchy Prawn", "note": "GFO, M. With tomato wasabi mayo." },
-            { "name": "Omakase Dessert", "note": "Mystery dessert." }
+            {
+              "name": "Spicy Garlic & Ginger Edamame",
+              "note": "GF, VEG. With garlic, ginger and mild spice."
+            },
+            {
+              "name": "Green Salad",
+              "note": "GFO, VEG. With sesame dressing."
+            },
+            {
+              "name": "Sashimi",
+              "note": "GF, M. Three pieces, catch of the day."
+            },
+            {
+              "name": "Wasabi Crunchy Prawn",
+              "note": "GFO, M. With tomato wasabi mayo."
+            },
+            {
+              "name": "Omakase Dessert",
+              "note": "Mystery dessert."
+            }
           ]
         }
       ]
@@ -44,10 +71,22 @@
           "summary": "Chef-selected sashimi and seasonal seafood.",
           "image": "https://static.wixstatic.com/media/0e0390_7d5bb6c4c006486c9dbcb662bd7f5219~mv2.jpg/v1/fit/w_960,h_1440,q_90,enc_avif,quality_auto/0e0390_7d5bb6c4c006486c9dbcb662bd7f5219~mv2.jpg",
           "courses": [
-            { "name": "Salmon", "note": "GF, A. Five pieces." },
-            { "name": "Kingfish", "note": "GF, A. Five pieces." },
-            { "name": "Tuna", "note": "GF, A. Five pieces." },
-            { "name": "Premium Sashimi Set", "note": "M. Eleven chef-selected sashimi." }
+            {
+              "name": "Salmon",
+              "note": "GF, A. Five pieces."
+            },
+            {
+              "name": "Kingfish",
+              "note": "GF, A. Five pieces."
+            },
+            {
+              "name": "Tuna",
+              "note": "GF, A. Five pieces."
+            },
+            {
+              "name": "Premium Sashimi Set",
+              "note": "M. Eleven chef-selected sashimi."
+            }
           ]
         }
       ]
@@ -63,9 +102,18 @@
           "summary": "Lunch meals with catch of the day sashimi, a main course, rice and miso soup.",
           "image": "https://static.wixstatic.com/media/0e0390_df03315dafb2499ca8273dcddd769c67~mv2.jpg/v1/fill/w_726,h_1814,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/_25A5124_edited.jpg",
           "courses": [
-            { "name": "Wagyu Sirloin MB4+", "note": "38.8. GFO. 80g with miso, onion shallot sauce and homemade pickle." },
-            { "name": "Karaage Chicken", "note": "26.8. GF. With spicy mayo." },
-            { "name": "Daily Limited Chirashi Don", "note": "22.8. GF, M. Assorted sashimi with miso soup." }
+            {
+              "name": "Wagyu Sirloin MB4+",
+              "note": "38.8. GFO. 80g with miso, onion shallot sauce and homemade pickle."
+            },
+            {
+              "name": "Karaage Chicken",
+              "note": "26.8. GF. With spicy mayo."
+            },
+            {
+              "name": "Daily Limited Chirashi Don",
+              "note": "22.8. GF, M. Assorted sashimi with miso soup."
+            }
           ]
         }
       ]
@@ -81,10 +129,22 @@
           "summary": "Pre-order required at least one day in advance.",
           "image": "https://static.wixstatic.com/media/0e0390_4eda4788f43a46faa9e54149b3eea268~mv2.jpg/v1/fit/w_960,h_1442,q_90,enc_avif,quality_auto/0e0390_4eda4788f43a46faa9e54149b3eea268~mv2.jpg",
           "courses": [
-            { "name": "Spicy Garlic & Ginger Edamame", "note": "GF, VEG. With garlic, ginger and mild spice." },
-            { "name": "Vegan Tuna & Yuzu Kosho", "note": "Radish, tosaka seaweed and watermelon." },
-            { "name": "Miso Eggplant", "note": "Pink peppercorn." },
-            { "name": "Omakase Dessert", "note": "Chef's choice dessert." }
+            {
+              "name": "Spicy Garlic & Ginger Edamame",
+              "note": "GF, VEG. With garlic, ginger and mild spice."
+            },
+            {
+              "name": "Vegan Tuna & Yuzu Kosho",
+              "note": "Radish, tosaka seaweed and watermelon."
+            },
+            {
+              "name": "Miso Eggplant",
+              "note": "Pink peppercorn."
+            },
+            {
+              "name": "Omakase Dessert",
+              "note": "Chef's choice dessert."
+            }
           ]
         }
       ]
