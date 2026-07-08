@@ -267,7 +267,7 @@ const renderCalendarFromData = (calendarData) => {
 };
 
 if (calendarGrid) {
-  fetch("data/events.json")
+  fetch(`data/events.json?v=${Date.now()}`, { cache: "no-store" })
     .then((response) => (response.ok ? response.json() : Promise.reject(new Error("No events data"))))
     .then(renderCalendarFromData)
     .catch(bindCalendarDays);
