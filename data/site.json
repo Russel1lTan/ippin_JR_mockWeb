@@ -1,0 +1,26 @@
+{
+  "restaurantName": "IPPIN JAPANESE DINING",
+  "address": "The Garden Pavilion, West Village, Level 2/97 Boundary St, West End QLD 4101",
+  "phone": "1800 749 177 or 0432 111 287",
+  "aiBookingPhone": "0468 153 749",
+  "reservationEmail": "reservation@ippin-wv.com.au",
+  "managerEmail": "manager@ippin-wv.com.au",
+  "bookingUrl": "https://www.sevenrooms.com/explore/ippinjapanesedining/reservations/create/search/",
+  "serviceTimes": [
+    {
+      "days": "Mon-Thu",
+      "hours": "11:00am-2:30pm | 5:00pm-10:00pm",
+      "lastOrders": "Kitchen last orders: 9:00pm"
+    },
+    {
+      "days": "Fri-Sat",
+      "hours": "11:00am-late",
+      "lastOrders": "Kitchen last orders: 9:30pm"
+    },
+    {
+      "days": "Sun",
+      "hours": "11:00am-9:00pm",
+      "lastOrders": "Kitchen last orders: 9:00pm"
+    }
+  ]
+}

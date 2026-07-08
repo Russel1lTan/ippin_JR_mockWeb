@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IPPIN Maintenance Panel</title>
+    <link rel="stylesheet" href="admin.css">
+  </head>
+  <body>
+    <main class="admin-shell">
+      <aside class="admin-sidebar">
+        <div>
+          <p class="eyebrow">IPPIN</p>
+          <h1>Maintenance Panel</h1>
+          <p class="muted">Local editor for events, menu data and daily site information.</p>
+        </div>
+        <button id="open-folder" class="primary" type="button">Open Website Folder</button>
+        <button id="save-all" class="secondary" type="button" disabled>Save All Data</button>
+        <p id="status" class="status">Open the IPPIN project folder to start.</p>
+      </aside>
+
+      <section class="admin-workspace" aria-label="Maintenance workspace">
+        <nav class="admin-tabs" aria-label="Editor sections">
+          <button class="is-active" type="button" data-admin-tab="events">Events Calendar</button>
+          <button type="button" data-admin-tab="menu">Menu Data</button>
+          <button type="button" data-admin-tab="site">Site Info</button>
+        </nav>
+
+        <section class="admin-panel is-active" data-admin-panel="events">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">What's On</p>
+              <h2>Events Calendar</h2>
+            </div>
+            <button class="secondary" type="button" id="add-event">Add Event</button>
+          </div>
+          <div class="month-grid">
+            <label>Year <input id="events-year" type="number" min="2024" max="2035"></label>
+            <label>Month <input id="events-month" type="number" min="1" max="12"></label>
+          </div>
+          <div id="event-list" class="editor-list"></div>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="menu">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Full Menu</p>
+              <h2>Menu Data</h2>
+            </div>
+            <button class="secondary" type="button" id="add-menu-item">Add Menu Item</button>
+          </div>
+          <label class="select-label">Menu Section
+            <select id="menu-section"></select>
+          </label>
+          <div id="menu-list" class="editor-list"></div>
+        </section>
+
+        <section class="admin-panel" data-admin-panel="site">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Daily Info</p>
+              <h2>Site Info</h2>
+            </div>
+          </div>
+          <div id="site-form" class="site-form"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="event-template">
+      <article class="editor-card">
+        <div class="card-actions">
+          <strong data-card-title>Event</strong>
+          <button type="button" data-remove>Remove</button>
+        </div>
+        <div class="field-grid">
+          <label>Date <input data-field="date" type="date"></label>
+          <label>Title <input data-field="title" type="text"></label>
+          <label class="full">Description <textarea data-field="description" rows="3"></textarea></label>
+          <label class="full">Image URL <input data-field="image" type="url"></label>
+          <label class="full">Thumbnail URL <input data-field="thumbnail" type="url"></label>
+        </div>
+      </article>
+    </template>
+
+    <template id="menu-template">
+      <article class="editor-card">
+        <div class="card-actions">
+          <strong data-card-title>Menu Item</strong>
+          <button type="button" data-remove>Remove</button>
+        </div>
+        <div class="field-grid">
+          <label>Title <input data-field="title" type="text"></label>
+          <label>Price <input data-field="price" type="text"></label>
+          <label>Eyebrow <input data-field="eyebrow" type="text"></label>
+          <label class="full">Image URL <input data-field="image" type="url"></label>
+          <label class="full">Summary <textarea data-field="summary" rows="3"></textarea></label>
+          <label class="full">Courses, one per line <textarea data-field="coursesText" rows="7" placeholder="Course name | Note"></textarea></label>
+        </div>
+      </article>
+    </template>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

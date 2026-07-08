@@ -153,44 +153,125 @@ const calendarEventImage = document.querySelector(".calendar-event-image");
 const calendarEventTitle = document.querySelector(".calendar-event h3");
 const calendarEventDate = document.querySelector(".calendar-event-date");
 const calendarEventDescription = document.querySelector(".calendar-event-description");
+const calendarGrid = document.querySelector(".calendar-grid");
+const calendarHeaderTitle = document.querySelector(".calendar-header h2");
 
-document.querySelectorAll(".calendar-has-event").forEach((day) => {
-  day.setAttribute("aria-expanded", String(day.classList.contains("is-active")));
-  const activateDay = () => {
-    document.querySelectorAll(".calendar-has-event").forEach((eventDay) => {
-      eventDay.classList.toggle("is-active", eventDay === day);
-      eventDay.setAttribute("aria-expanded", String(eventDay === day));
-    });
-
-    if (calendarEventImage && day.dataset.eventImage) {
-      calendarEventImage.src = day.dataset.eventImage;
-      calendarEventImage.alt = day.dataset.eventTitle || "";
-    }
-
-    if (calendarEventTitle && day.dataset.eventTitle) {
-      calendarEventTitle.textContent = day.dataset.eventTitle;
-    }
-
-    if (calendarEventDate && day.dataset.eventDate) {
-      calendarEventDate.textContent = day.dataset.eventDate;
-    }
-
-    if (calendarEventDescription && day.dataset.eventDescription) {
-      calendarEventDescription.textContent = day.dataset.eventDescription;
-    }
-
-    calendarEvent?.classList.remove("is-highlighted");
-    window.requestAnimationFrame(() => calendarEvent?.classList.add("is-highlighted", "is-expanded"));
-  };
-
-  day.addEventListener("click", activateDay);
-  day.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      activateDay();
-    }
+const formatEventDate = (dateString) => {
+  const date = new Date(`${dateString}T00:00:00`);
+  return date.toLocaleDateString("en-AU", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
   });
-});
+};
+
+const escapeAttribute = (value = "") =>
+  String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+const activateCalendarDay = (day) => {
+  document.querySelectorAll(".calendar-has-event").forEach((eventDay) => {
+    eventDay.classList.toggle("is-active", eventDay === day);
+    eventDay.setAttribute("aria-expanded", String(eventDay === day));
+  });
+
+  if (calendarEventImage && day.dataset.eventImage) {
+    calendarEventImage.src = day.dataset.eventImage;
+    calendarEventImage.alt = day.dataset.eventTitle || "";
+  }
+
+  if (calendarEventTitle && day.dataset.eventTitle) {
+    calendarEventTitle.textContent = day.dataset.eventTitle;
+  }
+
+  if (calendarEventDate && day.dataset.eventDate) {
+    calendarEventDate.textContent = day.dataset.eventDate;
+  }
+
+  if (calendarEventDescription && day.dataset.eventDescription) {
+    calendarEventDescription.textContent = day.dataset.eventDescription;
+  }
+
+  calendarEvent?.classList.remove("is-highlighted");
+  window.requestAnimationFrame(() => calendarEvent?.classList.add("is-highlighted", "is-expanded"));
+};
+
+const bindCalendarDays = () => {
+  document.querySelectorAll(".calendar-has-event").forEach((day) => {
+    day.setAttribute("aria-expanded", String(day.classList.contains("is-active")));
+    day.addEventListener("click", () => activateCalendarDay(day));
+    day.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        activateCalendarDay(day);
+      }
+    });
+  });
+};
+
+const renderCalendarFromData = (calendarData) => {
+  if (!calendarGrid || !calendarHeaderTitle || !calendarData?.year || !calendarData?.month) {
+    return;
+  }
+
+  const monthIndex = Number(calendarData.month) - 1;
+  const monthName = new Date(calendarData.year, monthIndex, 1).toLocaleDateString("en-AU", {
+    month: "long",
+    year: "numeric",
+  });
+  const daysInMonth = new Date(calendarData.year, monthIndex + 1, 0).getDate();
+  const firstDay = new Date(calendarData.year, monthIndex, 1).getDay();
+  const mondayOffset = (firstDay + 6) % 7;
+  const eventMap = new Map((calendarData.events || []).map((eventItem) => [eventItem.date, eventItem]));
+
+  calendarHeaderTitle.innerHTML = `<span aria-hidden="true">&#9638;</span> ${monthName}`;
+  calendarGrid.innerHTML = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
+    .map((day) => `<span class="weekday" role="columnheader">${day}</span>`)
+    .join("");
+
+  for (let index = 0; index < mondayOffset; index += 1) {
+    calendarGrid.insertAdjacentHTML("beforeend", '<span class="calendar-day calendar-empty" aria-hidden="true"></span>');
+  }
+
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    const dateKey = `${calendarData.year}-${String(calendarData.month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    const eventItem = eventMap.get(dateKey);
+    if (eventItem) {
+      const thumbnail = eventItem.thumbnail || eventItem.image;
+      calendarGrid.insertAdjacentHTML(
+        "beforeend",
+        `<button class="calendar-day calendar-has-event" type="button" data-event-title="${escapeAttribute(eventItem.title)}" data-event-date="${escapeAttribute(formatEventDate(eventItem.date))}" data-event-description="${escapeAttribute(eventItem.description)}" data-event-image="${escapeAttribute(eventItem.image)}">
+          <span>${day}</span>
+          ${thumbnail ? `<img src="${escapeAttribute(thumbnail)}" alt="">` : ""}
+        </button>`
+      );
+    } else {
+      calendarGrid.insertAdjacentHTML("beforeend", `<span class="calendar-day">${day}</span>`);
+    }
+  }
+
+  while ((calendarGrid.children.length - 7) % 7 !== 0) {
+    calendarGrid.insertAdjacentHTML("beforeend", '<span class="calendar-day calendar-empty" aria-hidden="true"></span>');
+  }
+
+  const firstEventDay = calendarGrid.querySelector(".calendar-has-event");
+  if (firstEventDay) {
+    firstEventDay.classList.add("is-active");
+    activateCalendarDay(firstEventDay);
+  }
+  bindCalendarDays();
+};
+
+if (calendarGrid) {
+  fetch("data/events.json")
+    .then((response) => (response.ok ? response.json() : Promise.reject(new Error("No events data"))))
+    .then(renderCalendarFromData)
+    .catch(bindCalendarDays);
+}
 
 if (!document.querySelector(".site-footer")) {
   const footer = document.createElement("footer");
