@@ -22,6 +22,13 @@ const siteDefaults = {
     find: "FIND US EASILY | CLICK HERE",
     book: "\u3054\u4e88\u7d04\u306f\u3053\u3061\u3089 RESERVATION HERE",
   },
+  backgroundMusic: {
+    enabled: false,
+    title: "",
+    audioUrl: "",
+    volume: 0.35,
+    loop: true,
+  },
   serviceTimes: [
     { days: "Mon-Thu", hours: "11:00am-2:30pm | 5:00pm-10:00pm", lastOrders: "Kitchen last orders: 9:00pm" },
     { days: "Fri-Sat", hours: "11:00am-late", lastOrders: "Kitchen last orders: 9:30pm" },
@@ -40,6 +47,7 @@ let findUsUrl = siteDefaults.findUsUrl;
 let logoUrl = siteDefaults.logoUrl;
 let floatingFindLabel = siteDefaults.footerCtas.find;
 let floatingBookLabel = siteDefaults.footerCtas.book;
+let backgroundMusicConfig = siteDefaults.backgroundMusic;
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const currentPage = window.location.pathname.split("/").pop() || "index.html";
@@ -52,6 +60,11 @@ const escapeHtml = (value = "") =>
     .replace(/>/g, "&gt;");
 
 const escapeAttribute = escapeHtml;
+
+const musicPlayer = {
+  audio: null,
+  button: null,
+};
 
 const fetchJson = (path) =>
   fetch(`${path}?v=${Date.now()}`, { cache: "no-store" }).then((response) => {
@@ -98,6 +111,64 @@ const ensureFloatingCta = () => {
   if (bookingCta) {
     bookingCta.textContent = floatingBookLabel;
   }
+};
+
+const removeMusicControl = () => {
+  musicPlayer.audio?.pause();
+  musicPlayer.audio = null;
+  musicPlayer.button?.remove();
+  musicPlayer.button = null;
+};
+
+const ensureMusicControl = (music = siteDefaults.backgroundMusic) => {
+  const config = { ...siteDefaults.backgroundMusic, ...(music || {}) };
+  backgroundMusicConfig = config;
+
+  if (!config.enabled || !config.audioUrl) {
+    removeMusicControl();
+    return;
+  }
+
+  if (musicPlayer.audio?.src !== config.audioUrl) {
+    musicPlayer.audio?.pause();
+    musicPlayer.audio = new Audio(config.audioUrl);
+  }
+
+  musicPlayer.audio.loop = config.loop !== false;
+  musicPlayer.audio.volume = Math.min(1, Math.max(0, Number(config.volume) || 0.35));
+
+  const button = musicPlayer.button || document.createElement("button");
+  button.className = "music-toggle";
+  button.type = "button";
+  button.innerHTML = `
+    <span class="music-toggle-kicker">Music</span>
+    <span>${escapeHtml(config.title || "Background music")}</span>
+  `;
+  button.setAttribute("aria-pressed", String(!musicPlayer.audio.paused));
+  button.setAttribute("aria-label", `Toggle background music: ${config.title || "background music"}`);
+
+  if (!musicPlayer.button) {
+    button.addEventListener("click", async () => {
+      if (!musicPlayer.audio) return;
+      if (musicPlayer.audio.paused) {
+        try {
+          await musicPlayer.audio.play();
+          button.classList.add("is-playing");
+          button.setAttribute("aria-pressed", "true");
+        } catch {
+          button.classList.remove("is-playing");
+          button.setAttribute("aria-pressed", "false");
+        }
+      } else {
+        musicPlayer.audio.pause();
+        button.classList.remove("is-playing");
+        button.setAttribute("aria-pressed", "false");
+      }
+    });
+    document.body.append(button);
+  }
+
+  musicPlayer.button = button;
 };
 
 syncActiveLinks();
@@ -543,6 +614,7 @@ const renderFooterFromData = (site = siteDefaults) => {
   logoUrl = site.logoUrl || siteDefaults.logoUrl;
   floatingFindLabel = site.footerCtas?.find || siteDefaults.footerCtas.find;
   floatingBookLabel = site.footerCtas?.book || siteDefaults.footerCtas.book;
+  backgroundMusicConfig = { ...siteDefaults.backgroundMusic, ...(site.backgroundMusic || {}) };
 
   const footer = document.querySelector(".site-footer") || document.createElement("footer");
   const serviceTimes = site.serviceTimes?.length ? site.serviceTimes : siteDefaults.serviceTimes;
@@ -591,6 +663,7 @@ const renderFooterFromData = (site = siteDefaults) => {
   }
 
   ensureFloatingCta();
+  ensureMusicControl(backgroundMusicConfig);
   syncActiveLinks();
 };
 

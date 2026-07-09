@@ -16,6 +16,13 @@ const defaults = {
     managerEmail: "",
     bookingUrl: "",
     serviceTimes: [],
+    backgroundMusic: {
+      enabled: false,
+      title: "",
+      audioUrl: "",
+      volume: 0.35,
+      loop: true,
+    },
   },
 };
 
@@ -351,6 +358,47 @@ const renderSite = () => {
   });
   ctas.append(ctaTextarea);
   siteForm.append(ctas);
+
+  const music = {
+    enabled: false,
+    title: "",
+    audioUrl: "",
+    volume: 0.35,
+    loop: true,
+    ...(state.data.site.backgroundMusic || {}),
+  };
+  state.data.site.backgroundMusic = music;
+
+  const musicPanel = document.createElement("fieldset");
+  musicPanel.className = "admin-subpanel full";
+  musicPanel.innerHTML = `
+    <legend>Background Music</legend>
+    <label class="checkbox-label"><input data-music-field="enabled" type="checkbox"> Enable background music</label>
+    <label>Track Title <input data-music-field="title" type="text" placeholder="Aruarian Dance - Nujabes"></label>
+    <label class="full">Audio URL <input data-music-field="audioUrl" type="url" placeholder="Use a licensed .mp3 or .ogg URL"></label>
+    <label>Volume <input data-music-field="volume" type="number" min="0" max="1" step="0.05"></label>
+    <label class="checkbox-label"><input data-music-field="loop" type="checkbox"> Loop track</label>
+    <p class="field-note full">Use only music you own or have permission to stream. Browser autoplay is blocked, so visitors start music with the Music button.</p>
+  `;
+
+  musicPanel.querySelectorAll("[data-music-field]").forEach((input) => {
+    const field = input.dataset.musicField;
+    if (input.type === "checkbox") {
+      input.checked = Boolean(music[field]);
+    } else {
+      input.value = music[field] ?? "";
+    }
+    input.addEventListener("input", () => {
+      if (input.type === "checkbox") {
+        music[field] = input.checked;
+      } else if (field === "volume") {
+        music[field] = Number(input.value);
+      } else {
+        music[field] = input.value;
+      }
+    });
+  });
+  siteForm.append(musicPanel);
 };
 
 const renderAll = () => {

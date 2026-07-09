@@ -16,6 +16,13 @@
     "find": "FIND US EASILY | CLICK HERE",
     "book": "ご予約はこちら RESERVATION HERE"
   },
+  "backgroundMusic": {
+    "enabled": false,
+    "title": "Aruarian Dance - Nujabes",
+    "audioUrl": "",
+    "volume": 0.35,
+    "loop": true
+  },
   "serviceTimes": [
     {
       "days": "Mon-Thu",

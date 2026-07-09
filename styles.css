@@ -1495,6 +1495,69 @@ h3 {
   content: "";
 }
 
+.music-toggle {
+  position: fixed;
+  bottom: clamp(138px, 11vw, 166px);
+  left: clamp(18px, 3vw, 48px);
+  z-index: 31;
+  display: grid;
+  gap: 3px;
+  max-width: min(280px, calc(100vw - 36px));
+  padding: 13px 18px;
+  border: 1px solid rgba(216, 177, 90, 0.38);
+  border-radius: 999px;
+  background: rgba(68, 3, 19, 0.78);
+  box-shadow: 0 14px 32px rgba(37, 0, 8, 0.24), inset 0 1px 0 rgba(255, 250, 243, 0.12);
+  color: var(--paper);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-align: left;
+  text-transform: uppercase;
+  backdrop-filter: blur(18px);
+  transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.music-toggle::before {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.55);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.music-toggle.is-playing::before {
+  background: var(--gold);
+  box-shadow: 0 0 16px rgba(216, 177, 90, 0.72);
+}
+
+.music-toggle:hover,
+.music-toggle:focus-visible {
+  border-color: rgba(216, 177, 90, 0.72);
+  background: rgba(68, 3, 19, 0.9);
+  transform: translateY(-3px);
+}
+
+.music-toggle span:last-child {
+  max-width: 210px;
+  overflow: hidden;
+  padding-right: 18px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-toggle-kicker {
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+}
+
 .event-detail-section {
   padding-top: 0;
 }
@@ -2548,6 +2611,10 @@ h3 {
     gap: 12px;
   }
 
+  .music-toggle {
+    bottom: 146px;
+  }
+
   .beverage-pdf-heading {
     align-items: start;
     flex-direction: column;
@@ -2634,6 +2701,12 @@ h3 {
     min-height: 58px;
     padding-inline: 22px;
     font-size: 11px;
+  }
+
+  .music-toggle {
+    bottom: 136px;
+    padding: 10px 14px;
+    font-size: 10px;
   }
 
   .image-stack img {
