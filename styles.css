@@ -3357,3 +3357,241 @@ h3 {
     letter-spacing: 0.12em;
   }
 }
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: minmax(116px, 36%) minmax(0, 64%);
+    min-height: calc(100svh - 72px);
+  }
+
+  .hero-panel:nth-child(2) {
+    display: none;
+  }
+
+  .hero-panel:first-child,
+  .hero-panel:nth-child(3) {
+    min-height: calc(100svh - 72px);
+  }
+
+  .hero-panel:first-child img {
+    object-position: 42% center;
+  }
+
+  .hero-panel:nth-child(3) img {
+    object-position: 56% center;
+  }
+
+  .hero-location-title {
+    right: 10px;
+    bottom: 126px;
+    left: 10px;
+    font-size: clamp(24px, 8.2vw, 36px);
+  }
+
+  .hero-award {
+    top: 24px;
+    transform: translateX(-50%) scale(0.62);
+  }
+
+  .hero-rating-card {
+    right: 14px;
+    bottom: 102px;
+    width: min(224px, 56vw);
+    padding: 14px;
+  }
+
+  .hero-rating-card p {
+    letter-spacing: 0.17em;
+  }
+
+  .menu-tabs {
+    gap: 8px;
+    margin: 0 -18px 28px;
+    padding: 0 18px 10px;
+  }
+
+  .menu-tabs a {
+    flex: 0 0 auto;
+    min-width: auto;
+    padding: 10px 13px;
+    border: 1px solid rgba(255, 250, 243, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 250, 243, 0.055);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .menu-tabs a::after {
+    display: none;
+  }
+
+  .menu-tabs a.is-active {
+    border-color: rgba(216, 177, 90, 0.72);
+    background: rgba(216, 177, 90, 0.18);
+    color: #fffaf3;
+  }
+
+  .menu-block-large[data-menu-panel="alacarte"] .menu-category {
+    padding-top: 52px;
+  }
+
+  .menu-block-large .menu-category::before {
+    top: 10px;
+    right: 14px;
+    z-index: 0;
+    color: rgba(216, 177, 90, 0.18);
+    font-size: 46px;
+    pointer-events: none;
+  }
+
+  .menu-category h3,
+  .menu-category > p,
+  .compact-dish {
+    position: relative;
+    z-index: 1;
+  }
+
+  .menu-block-large .menu-category h3 {
+    max-width: none;
+    padding-right: 34px;
+    font-size: clamp(24px, 8vw, 31px);
+  }
+
+  .menu-block-large[data-menu-panel="alacarte"] .menu-category h3 {
+    padding-right: 0;
+  }
+
+  .menu-block-large[data-menu-panel="alacarte"] .compact-dish {
+    padding-block: 10px;
+  }
+
+  .bottomless-page {
+    overflow-x: hidden;
+  }
+
+  .bottomless-hero {
+    gap: 24px;
+    padding: 24px 18px 78px;
+    overflow: hidden;
+  }
+
+  .bottomless-hero figure,
+  .bottomless-copy {
+    min-width: 0;
+  }
+
+  .bottomless-copy h1 {
+    max-width: 100%;
+    font-size: clamp(44px, 15vw, 64px);
+    line-height: 0.98;
+    overflow-wrap: anywhere;
+  }
+
+  .bottomless-copy p:not(.eyebrow) {
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  .bottomless-actions {
+    width: 100%;
+  }
+
+  .bottomless-actions .button {
+    width: 100%;
+    min-width: 0;
+    padding-inline: 16px;
+    white-space: normal;
+  }
+
+  .bottomless-hero img {
+    width: 100%;
+    max-height: none;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .image-stack {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: stretch;
+  }
+
+  .image-stack img:first-child {
+    height: 330px;
+  }
+
+  .image-stack img:nth-child(2) {
+    height: 250px;
+    align-self: end;
+  }
+
+  .gallery-grid {
+    grid-auto-flow: dense;
+    grid-auto-rows: 118px;
+  }
+
+  .gallery-grid img {
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .gallery-grid img:nth-child(3n + 1) {
+    grid-row: span 2;
+  }
+
+  .gallery-grid img:nth-child(5n) {
+    grid-column: span 2;
+  }
+
+  .event-card img:nth-child(1),
+  .content-card img {
+    min-height: 0;
+    max-height: none;
+  }
+
+  .event-card:nth-child(odd) img {
+    height: 260px;
+  }
+
+  .event-card:nth-child(even) img {
+    height: 210px;
+  }
+
+  .page-hero img {
+    min-height: 0;
+    height: min(72vw, 340px);
+  }
+}
+
+@media (max-width: 420px) {
+  .hero {
+    grid-template-columns: minmax(108px, 35%) minmax(0, 65%);
+  }
+
+  .hero-location-title {
+    bottom: 114px;
+    font-size: 24px;
+  }
+
+  .hero-rating-card {
+    right: 10px;
+    bottom: 96px;
+    width: 55vw;
+    padding: 11px;
+  }
+
+  .hero-rating-card p {
+    font-size: 8px;
+  }
+
+  .hero-rating-card strong {
+    font-size: 28px;
+  }
+
+  .menu-tabs a {
+    padding: 9px 11px;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+  }
+}
