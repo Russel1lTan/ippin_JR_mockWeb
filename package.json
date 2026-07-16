@@ -1,5 +1,6 @@
 {
   "scripts": {
-    "admin": "node server.js"
+    "admin": "node server.js",
+    "test": "node --test tests/*.test.mjs"
   }
 }

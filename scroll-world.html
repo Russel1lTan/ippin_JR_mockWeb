@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#440313">
+    <title>IPPIN Scroll World Experiment</title>
+    <meta name="description" content="An experimental, scroll-led journey through IPPIN Japanese Dining at West Village.">
+    <link rel="preconnect" href="https://static.wixstatic.com">
+    <link rel="icon" href="https://static.wixstatic.com/media/0e0390_ea393f43df5a441c9dbb1cb248e526a7~mv2.png/v1/fill/w_64,h_64,al_c,q_90,enc_avif,quality_auto/IPPIN%20favicon.png">
+    <link rel="stylesheet" href="scroll-world.css">
+  </head>
+  <body>
+    <main id="scroll-world">
+      <section class="sw-fallback">
+        <p>IPPIN JAPANESE DINING</p>
+        <h1>West Village. West End.</h1>
+        <a href="index.html">Enter the original site</a>
+      </section>
+    </main>
+
+    <script type="module">
+      import { mountScrollWorld } from "./scroll-world.js";
+
+      const logo = "https://static.wixstatic.com/media/0e0390_657064e383634f6a9622112d2a5b7fb5~mv2.png/v1/fill/w_294,h_120,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Ippin_Wordmark_White.png";
+      const bookingUrl = "https://www.sevenrooms.com/explore/ippinjapanesedining/reservations/create/search/";
+
+      mountScrollWorld(document.querySelector("#scroll-world"), {
+        overlap: 0.2,
+        brand: { name: "IPPIN Japanese Dining", logo, href: "index.html" },
+        exit: { href: "index.html" },
+        scenes: [
+          {
+            label: "Arrival",
+            eyebrow: "WEST VILLAGE, WEST END",
+            title: "Above the city. Inside IPPIN.",
+            body: "Step away from the street and into a warmer, quieter world of contemporary Japanese dining.",
+            image: "https://static.wixstatic.com/media/0e0390_69efa274950049f695665dc9d3959e24~mv2.jpg/v1/fill/w_1800,h_1600,al_c,q_90,enc_avif,quality_auto/2025-NOV-5-IPPIN-QLD-A%26E-GALLERY-9.jpg",
+            imageAlt: "The glowing reception and sculptural ceiling inside IPPIN",
+            position: "center 48%",
+            tags: ["Level 2", "West Village", "Brisbane"],
+          },
+          {
+            label: "Craft",
+            eyebrow: "SEASONAL JAPANESE CRAFT",
+            title: "Every course, a considered moment.",
+            body: "Japanese technique, Australian produce and a sense of occasion come together at the table.",
+            image: "https://static.wixstatic.com/media/0e0390_df03315dafb2499ca8273dcddd769c67~mv2.jpg/v1/fill/w_1800,h_1600,al_c,q_90,enc_avif,quality_auto/_25A5124_edited.jpg",
+            imageAlt: "A guest photographing an abundant sashimi presentation at IPPIN",
+            position: "center 52%",
+            tags: ["Sashimi", "Wagyu", "Omakase"],
+          },
+          {
+            label: "Evening",
+            eyebrow: "DINNER, WINE & SAKE",
+            title: "Stay for the whole experience.",
+            body: "Settle in for warm service, chef-led menus and a cellar curated for memorable evenings.",
+            image: "https://static.wixstatic.com/media/0e0390_74b7834d0bf344988a7ab36341d19c69~mv2.jpg/v1/fill/w_1800,h_1600,al_l,q_90,enc_avif,quality_auto/_25A2864_edited.jpg",
+            imageAlt: "Guests dining in the softly lit IPPIN restaurant",
+            position: "center 42%",
+            awardImage: "assets/agfg-award-winner-2026.png",
+            awardAlt: "AGFG Award Winner 2026, 13 chef hats",
+            tags: ["Chef-hatted", "4.7 Google", "Curated sake"],
+            cta: {
+              booking: { label: "Book a table", href: bookingUrl, external: true },
+              menu: { label: "Explore the menu", href: "menu.html" },
+            },
+          },
+        ],
+      });
+    </script>
+  </body>
+</html>
